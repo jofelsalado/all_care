@@ -72,20 +72,20 @@ export function AccountTable({ users }: any) {
     date: String(date),
     status: String(status),
   });
-  // async function deleteUser(id: string) {
-  //   try {
-  //     fetch(`http://localhost:3000/api/user/${id}`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       method: "DELETE",
-  //     }).then(() => {
-  //       refreshData();
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  async function deleteUser(id: string) {
+    try {
+      fetch(`http://localhost:3000/api/user/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "DELETE",
+      }).then(() => {
+        refreshData();
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const handleSubmit = async (id: string, data: FormData) => {
     try {
       updateUser(id, data);
