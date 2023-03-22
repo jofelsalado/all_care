@@ -40,7 +40,6 @@ export function AccountTable({ users }: any) {
     Router.replace(Router.asPath);
   };
   const router = useRouter();
-  const [isOpen, setOpen] = useState(false);
   var id = "";
   var user_role = "";
   var email = "";
@@ -104,6 +103,7 @@ export function AccountTable({ users }: any) {
         },
         method: "PATCH",
       }).then(() => {
+        form.id = "";
         refreshData();
       });
     } catch (error) {
@@ -113,7 +113,7 @@ export function AccountTable({ users }: any) {
 
   useEffect(() => {
     // Update the document title using the browser API
-    console.log(isOpen);
+
     if (filter == "") {
       setShowFilter(false);
     }
@@ -414,9 +414,8 @@ export function AccountTable({ users }: any) {
 
                         <button
                           onClick={() => {
-                            setOpen(!isOpen);
                             form.id = item.id;
-                            if (isOpen == true) {
+                            if (item.status == "DISABLED") {
                               form.user_role = item.user_role;
                               form.email = item.email;
                               form.username = item.username;
