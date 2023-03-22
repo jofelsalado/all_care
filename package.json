@@ -1,0 +1,39 @@
+{
+  "name": "all_care",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.7.1",
+    "@types/node": "18.11.10",
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.9",
+    "date-fns": "^2.29.3",
+    "eslint": "8.29.0",
+    "eslint-config-next": "13.0.6",
+    "next": "13.0.6",
+    "next-auth": "^4.19.2",
+    "react": "18.2.0",
+    "react-day-picker": "^8.5.1",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.40.0",
+    "react-hot-toast": "^2.4.0",
+    "react-icons": "^4.7.1",
+    "react-stars": "^2.2.5",
+    "swr": "^1.3.0",
+    "tw-elements": "^1.0.0-alpha13",
+    "typescript": "4.9.3"
+  },
+  "devDependencies": {
+    "@types/react-stars": "^2.2.1",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
+    "prisma": "^4.7.1",
+    "tailwindcss": "^3.2.4"
+  }
+}

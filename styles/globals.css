@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'KHULA BOLD';
+  src: url('../public/fonts/khula/khula-bold.otf');
+}
+
+@font-face {
+  font-family: 'KHULA EXTRABOLD';
+  src: url('../public/fonts/khula/khula-extrabold.otf');
+}
+
+@font-face {
+  font-family: 'KHULA LIGHT';
+  src: url('../public/fonts/khula/khula-light.otf');
+}
+
+@font-face {
+  font-family: 'KHULA REGULAR';
+  src: url('../public/fonts/khula/khula-regular.otf');
+}
+
+@font-face {
+  font-family: 'KHULA SEMIBOLD';
+  src: url('../public/fonts/khula/khula-semibold.otf');
+}
