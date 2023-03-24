@@ -29,7 +29,7 @@ export function HomeLayout({ children }: any) {
   }
   return (
     <div>
-      <div className="w-full bg-gray-100">
+      <div className="w-full bg-gray-100 h-screen">
         <div
           className={`flex flex-row  sticky z-50 top-0 duration-300 ${setHeight} relative bg-white`}
         >

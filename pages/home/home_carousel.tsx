@@ -7,6 +7,7 @@ import pic3 from '../../public/images/pic3.jpg';
 
 import Image from "next/image";
 
+import dynamic from "next/dynamic";
 
 export function HomeCarousel() {
     return (
