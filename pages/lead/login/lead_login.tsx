@@ -96,10 +96,10 @@ export function LeadLogin({ users }: any) {
                   </label>
                 </div>
                 <a
-                  href="#!"
-                  className="text-gray-800"
+                  href={"./sign_up"}
+                  className="text-blue-800 font-khulaXbold" 
                 >
-                  Forgot password?
+                 Sign Up
                 </a>
               </div>
 
