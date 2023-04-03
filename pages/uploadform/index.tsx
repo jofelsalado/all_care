@@ -4,12 +4,14 @@ import axios from "axios";
 import fs from "fs/promises";
 import path from "path";
 import Link from "next/link";
+import SignUpPage from "../lead/sign_up";
+
 
 interface Props {
   dirs: string[];
 }
 
-const UploadForm: NextPage<Props> = ({ dirs }) => {
+const UploadForm: NextPage<Props> = () => {
   const [uploading, setUploading] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedFile, setSelectedFile] = useState<File>();
@@ -29,7 +31,9 @@ const UploadForm: NextPage<Props> = ({ dirs }) => {
   };
 
   return (
-    <div className=" w-full">
+<div className="flex justify-center items-center w-full">
+      <div className="grow flex flex-col gap-14 mt-10 mb-10 p-10 bg-white rounded-3xl shadow-2xl bg-hero-pattern">
+      <SignUpPage/>
       <label>
         <input
           type="file"
@@ -53,14 +57,14 @@ const UploadForm: NextPage<Props> = ({ dirs }) => {
         </div>
       </label>
       <div className="w-full flex justify-center items-center pt-10">
-      {/* <button
+      <button
         onClick={handleUpload}
         disabled={uploading}
         style={{ opacity: uploading ? ".5" : "1" }}
         className="bg-red-600 p-3 w-32 text-center rounded text-white"
       >
         {uploading ? "Uploading.." : "Upload"}
-      </button> */}
+      </button>
       </div>
      
       {/* <div className="mt-20 flex flex-col space-y-3 bg-green-500">
@@ -71,6 +75,8 @@ const UploadForm: NextPage<Props> = ({ dirs }) => {
         ))}
       </div> */}
     </div>
+    </div>
+    
   );
 };
 export const getServerSideProps: GetServerSideProps = async () => {

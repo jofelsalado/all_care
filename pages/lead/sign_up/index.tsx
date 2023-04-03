@@ -2,7 +2,7 @@ import { SetStateAction, useState } from "react";
 import { HomeLayout } from "../../layout/home_layout";
 import Router from "next/router";
 import { Select, Option } from "@material-tailwind/react";
-import UploadForm from "../../uploadform/upload_form";
+import UploadForm from "../../uploadform";
 import axios from "axios";
 
 interface FormData {
@@ -21,6 +21,9 @@ interface FormData {
   image: string;
   date: string;
   status: string;
+}
+interface Props {
+  dirs: string[];
 }
 const currentDate = new Date().toLocaleDateString();
 export default function SignUpPage() {
@@ -110,13 +113,15 @@ export default function SignUpPage() {
     setUploading(false);
   };
   return (
-    <div className="flex justify-center items-center w-full">
-      <div className="grow flex flex-col gap-14 mt-10 mb-10 p-10 bg-white rounded-3xl shadow-2xl bg-hero-pattern">
+    // <div className="flex justify-center items-center w-full">
+    //   <div className="grow flex flex-col gap-14 mt-10 mb-10 p-10 bg-white rounded-3xl shadow-2xl bg-hero-pattern">
+    <div>
         <div>
           <h1 className="font-khulareg text-xl text-gray-700 tracking-[0.1rem]">
             Sign Up
           </h1>
         </div>
+        
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -315,7 +320,7 @@ export default function SignUpPage() {
                     setForm({ ...form, birthdate: e.target.value })
                   }
                 /> */}
-                <UploadForm dirs={[]}/>
+                {/* <UploadForm dirs={[]}/> */}
               </div>
 
               {/* <div className="w-[20rem] grow xl:grow-0">
@@ -337,6 +342,8 @@ export default function SignUpPage() {
               <div className="w-[10rem] mt-10">
                 {/* <Link href={"./"}> */}
                 <button
+                onClick={handleUpload}
+                disabled={uploading}
                   type="submit"
                   className="text-white bg-blue-700 text-center hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2  focus:outline-none  w-full"
                 >
@@ -347,7 +354,8 @@ export default function SignUpPage() {
             </div>
           </div>
         </form>
-      </div>
+      {/* </div>
+    </div> */}
     </div>
   );
 }
