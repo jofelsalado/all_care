@@ -2,6 +2,8 @@ import { SetStateAction, useState } from "react";
 import { HomeLayout } from "../../layout/home_layout";
 import Router from "next/router";
 import { Select, Option } from "@material-tailwind/react";
+import UploadForm from "../../uploadform/upload_form";
+import axios from "axios";
 
 interface FormData {
   id: string;
@@ -22,6 +24,9 @@ interface FormData {
 }
 const currentDate = new Date().toLocaleDateString();
 export default function SignUpPage() {
+  const [uploading, setUploading] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File>();
   const [form, setForm] = useState<FormData>({
     id: "",
     user_role: "",
@@ -90,6 +95,20 @@ export default function SignUpPage() {
     // console.log("setFormVal:", form.gender);
     
   };
+  
+  const handleUpload = async () => {
+    setUploading(true);
+    try {
+      if (!selectedFile) return;
+      const formData = new FormData();
+      formData.append("myImage", selectedFile);
+      const { data } = await axios.post("/api/image", formData);
+      console.log(data);
+    } catch (error: any) {
+      console.log(error.response?.data);
+    }
+    setUploading(false);
+  };
   return (
     <div className="flex justify-center items-center w-full">
       <div className="grow flex flex-col gap-14 mt-10 mb-10 p-10 bg-white rounded-3xl shadow-2xl bg-hero-pattern">
@@ -102,6 +121,7 @@ export default function SignUpPage() {
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit(form);
+            handleUpload();
           }}
         >
           <div className="flex flex-wrap w-full  gap-y-5 gap-x-5 justify-around items-around ">
@@ -280,6 +300,22 @@ export default function SignUpPage() {
                     setForm({ ...form, birthdate: e.target.value })
                   }
                 />
+              </div>
+
+              <div className="w-[20rem] grow xl:grow-0">
+                <label className="block mb-2 text-sm font-medium text-gray-900  font-khulabold">
+                  Upload Picture
+                </label>
+                {/* <input
+                  className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
+                  type="text"
+                  placeholder="MM/DD/YY"
+                  value={form.birthdate}
+                  onChange={(e) =>
+                    setForm({ ...form, birthdate: e.target.value })
+                  }
+                /> */}
+                <UploadForm dirs={[]}/>
               </div>
 
               {/* <div className="w-[20rem] grow xl:grow-0">
