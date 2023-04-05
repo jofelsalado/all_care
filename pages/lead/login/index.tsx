@@ -23,7 +23,7 @@ export default function LeadLoginPage({ users }: Users) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const users = await prisma.user.findMany({
     where: {
-      user_role: 3,
+      user_role: 1,
     },
     select: {
       id: true,
