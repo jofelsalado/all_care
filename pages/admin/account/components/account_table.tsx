@@ -211,10 +211,13 @@ export function AccountTable({ users }: any) {
                 GENDER
               </th>
               <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
-                ACTIONS
+                DATE
               </th>
               <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
                 STATUS
+              </th>
+              <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
+                ACTIONS
               </th>
             </tr>
           </thead>

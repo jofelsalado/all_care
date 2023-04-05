@@ -32,10 +32,11 @@ interface FormData {
 }
 const currentDate = new Date().toLocaleDateString();
 
-const UploadForm: NextPage<Props> = () => {
+// const UploadForm: NextPage<Props> = () => {
+  export default function UploadForm() {
 
   const [form, setForm] = useState<FormData>({
-    id: "",
+    id: "1",
     user_role: "",
     email: "",
     username: "",
@@ -88,12 +89,12 @@ const UploadForm: NextPage<Props> = () => {
   const handleSubmit = async (data: FormData) => {
     console.log("Email", data.email);
     console.log("Gender", data.gender);
-    // try {
-    //   console.log(data);
-    //   create(data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      console.log(data);
+      create(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (value: any) => {
@@ -134,7 +135,6 @@ const UploadForm: NextPage<Props> = () => {
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit(form);
-            handleUpload();
           }}
         >
           <div className="flex flex-wrap w-full  gap-y-5 gap-x-5 justify-around items-around ">
@@ -343,19 +343,6 @@ const UploadForm: NextPage<Props> = () => {
         </div>
       </label>
               </div>
-
-              {/* <div className="w-[20rem] grow xl:grow-0">
-                <label className="block mb-2 text-sm font-medium text-gray-900  font-khulabold">
-                  Gender
-                </label>
-                <input
-                  className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
-                  type="text"
-                  placeholder="e.g Male"
-                  value={form.gender}
-                  onChange={(e) => setForm({ ...form, gender: e.target.value })}
-                />
-              </div> */}
             </div>
           </div>
           <div className=" w-full flex justify-center items-center">
@@ -431,4 +418,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 };
 
-export default UploadForm;
+// export default UploadForm;
