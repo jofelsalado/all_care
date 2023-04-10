@@ -1,13 +1,13 @@
 export function FormRow({ label, desc, py }: any) {
   return (
-    <div className="flex flex-row gap-5 justify-between items-center w-[30rem]">
+    <div className="flex flex-col gap-5 justify-center items-start w-[30rem]">
       <div className=" shrink-0">{label} </div>
       <input
         type="text"
         className={`
         form-control
         block
-        w-[20rem]
+      
         px-3
         ${py}
         text-base

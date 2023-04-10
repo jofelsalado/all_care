@@ -171,27 +171,6 @@ export function LeadLayout({ children }: any) {
 
           <Link
             href={{
-              pathname: "/lead/advisors",
-            }}
-          >
-            <button
-              onClick={() => setName("Orders")}
-              className={` w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
-                open ? "hover:px-5" : "hover:px-0"
-              } ${open ? "md:scale-100" : "md:scale-100"} ${
-                open ? "scale-100" : "scale-0"
-              }`}
-            >
-              <AgentIcon
-                title="Advisors"
-                icon=<MdOutlineNaturePeople size="1.6rem" />
-                open={open}
-              />
-              {open}
-            </button>
-          </Link>
-          <Link
-            href={{
               pathname: "/lead/calculator",
             }}
           >
@@ -211,6 +190,29 @@ export function LeadLayout({ children }: any) {
               {open}
             </button>
           </Link>
+
+          <Link
+            href={{
+              pathname: "/lead/advisors",
+            }}
+          >
+            <button
+              onClick={() => setName("Orders")}
+              className={` w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
+                open ? "hover:px-5" : "hover:px-0"
+              } ${open ? "md:scale-100" : "md:scale-100"} ${
+                open ? "scale-100" : "scale-0"
+              }`}
+            >
+              <AgentIcon
+                title="Advisors"
+                icon=<MdOutlineNaturePeople size="1.6rem" />
+                open={open}
+              />
+              {open}
+            </button>
+          </Link>
+
           <Link
             href={{
               pathname: "/lead/meeting",
