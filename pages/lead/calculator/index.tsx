@@ -64,7 +64,7 @@ export default function ReportsPage() {
 
           <div className="flex flex-row w-full justify-around bg-blue-200 rounded-xl p-10 items-center">
             <div className="">
-              <div>Operating Activities</div>
+              <div>Investing Activities</div>
               <div className="flex flex-col w-min mt-10">
                 <div className="flex flex-row w-[27rem] gap-5">
                   <FormRow py="py-1.0" label="Description" />
@@ -92,16 +92,15 @@ export default function ReportsPage() {
               <div className="flex flex-col mt-10">
                 {" "}
                 <FormRow py="py-1.0" label="% of Monthly Income" />
-                <FormRow py="py-1.0" label="Recommended Limit" />
-                <FormRow py="py-1.0" label="Unused Allocation" />
-                <FormRow py="py-1.0" label="Cost" />
+                <FormRow py="py-1.0" label="Minimum Amount Needed" />
+                <FormRow py="py-1.0" label="Amount Not Invested" />
               </div>
             </div>
           </div>
 
           <div className="flex flex-row w-full justify-around bg-blue-200 rounded-xl p-10 items-center">
             <div className="">
-              <div>Operating Activities</div>
+              <div>Financing Activities</div>
               <div className="flex flex-col w-min mt-10">
                 <div className="flex flex-row w-[27rem] gap-5">
                   <FormRow py="py-1.0" label="Description" />
@@ -130,8 +129,7 @@ export default function ReportsPage() {
                 {" "}
                 <FormRow py="py-1.0" label="% of Monthly Income" />
                 <FormRow py="py-1.0" label="Recommended Limit" />
-                <FormRow py="py-1.0" label="Description" />
-                <FormRow py="py-1.0" label="Cost" />
+                <FormRow py="py-1.0" label="Amount Exceeding Limit" />
               </div>
             </div>
           </div>

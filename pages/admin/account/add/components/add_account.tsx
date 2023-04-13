@@ -248,7 +248,7 @@ export function AddAccount() {
                 />
               </div>
 
-              <div className="w-[20rem] grow xl:grow-0">
+              {/* <div className="w-[20rem] grow xl:grow-0">
                 <label className="block mb-2 text-sm font-medium text-gray-900  font-khulabold">
                   Gender
                 </label>
@@ -259,6 +259,19 @@ export function AddAccount() {
                   value={form.gender}
                   onChange={(e) => setForm({ ...form, gender: e.target.value })}
                 />
+              </div> */}
+              <div className="flex flex-col">
+                <label className="block mb-2 text-sm font-medium text-gray-900  font-khulabold">
+                  Gender
+                </label>
+                <select
+                  id="countries"
+                  className="bg-gray-50 borderw-[20rem] grow xl:grow-0 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+                >
+                  <option selected>Select Gender</option>
+                  <option value="US">Male</option>
+                  <option value="CA">Female</option>
+                </select>
               </div>
             </div>
           </div>

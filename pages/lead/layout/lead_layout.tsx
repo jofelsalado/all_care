@@ -227,7 +227,7 @@ export function LeadLayout({ children }: any) {
               }`}
             >
               <AgentIcon
-                title="Meeting"
+                title="History"
                 icon=<FaRegHandshake size="1.6rem" />
                 open={open}
               />

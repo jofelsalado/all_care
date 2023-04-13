@@ -160,10 +160,7 @@ export function AccountTable({ users }: any) {
             </button>
           </div>
         </div>
-        <Link
-          href={"./account/add"}
-          className="order-1"
-        >
+        <Link href={"./account/add"} className="order-1">
           <div className="cursor-pointer text-white scale-100 hover:scale-125 duration-300 flex justify-center items-center gap-1 font-khulareg bg-blue-600 py-1 px-3 rounded-3xl text-center">
             ADD
             <IoIosAddCircleOutline size="1.2rem" />
