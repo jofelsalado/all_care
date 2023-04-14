@@ -51,7 +51,7 @@ export function AddAccount() {
         method: "POST",
       }).then(() => {
         setForm({
-          id: "",
+          id: "1",
           user_role: "",
           email: "",
           username: "",
@@ -99,7 +99,7 @@ export function AddAccount() {
         >
           <div className="flex flex-wrap w-full  gap-y-5 gap-x-5 justify-around items-around ">
             <div className="flex flex-col gap-y-5">
-              <div className="w-[20rem] grow xl:grow-0">
+              {/* <div className="w-[20rem] grow xl:grow-0">
                 <label className="block mb-2 text-sm font-medium text-gray-900  font-khulabold">
                   Role
                 </label>
@@ -112,7 +112,7 @@ export function AddAccount() {
                     setForm({ ...form, user_role: e.target.value })
                   }
                 />
-              </div>
+              </div> */}
 
               <div className="w-[20rem] grow xl:grow-0">
                 <label className="block mb-2 text-sm font-medium text-gray-900  font-khulabold">

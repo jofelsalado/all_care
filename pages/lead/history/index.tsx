@@ -20,8 +20,8 @@ export default function MeetingPage() {
     <Suspense>
       <div>
         <AccountHeader header="Transaction History" />
-        <div className="flex justify-center items-center">
-          <table className="w-[60rem]">
+        <div className="flex justify-center items-center pl-[2.5rem] pr-[6rem]">
+          <table className="w-full">
             <thead className=" bg-[#f2f8ff] border-2 border-gray-200 ">
               <tr className="pt-10">
                 <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">

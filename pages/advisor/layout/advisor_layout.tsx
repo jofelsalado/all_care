@@ -4,14 +4,19 @@ import Router from "next/router";
 import { CiLogout } from "react-icons/ci";
 import { GiHamburgerMenu, GiBlackHandShield } from "react-icons/gi";
 import { FaHistory } from "react-icons/fa";
-import { BsColumns } from "react-icons/bs";
+import { BsColumns, BsFillCalculatorFill } from "react-icons/bs";
 import { BsPersonSquare } from "react-icons/bs";
-import { AiOutlineBell, AiTwotoneInsurance } from "react-icons/ai";
+import {
+  AiOutlineBell,
+  AiOutlineHistory,
+  AiTwotoneInsurance,
+} from "react-icons/ai";
 import { AgentIcon } from "./components/user_icon";
 import pic2 from "../../../public/images/pic2.jpg";
 import Link from "next/link";
 import { RxActivityLog } from "react-icons/rx";
 import { HydrationProvider, Client } from "react-hydration-provider";
+import { MdReportGmailerrorred } from "react-icons/md";
 
 export function AdvisorLayout({ children }: any) {
   const [open, setOpen] = useState(false);
@@ -143,13 +148,6 @@ export function AdvisorLayout({ children }: any) {
                       open={open}
                     />
                   </button>
-                  {/* <div
-            className={`bg-slate-200 text-slate-500 w-full ${sub} overflow-hidden duration-150 flex flex-col justify-center items-center gap-3 rounded-md`}
-          >
-            <button>- Sample 1</button>
-            <button>- Sample 2</button>
-            <button>- Sample 3</button>
-          </div> */}
                 </Link>
 
                 <Link
@@ -233,6 +231,72 @@ export function AdvisorLayout({ children }: any) {
                     <AgentIcon
                       title="Products"
                       icon=<BsColumns size="1.6rem" />
+                      open={open}
+                    />
+                    {open}
+                  </button>
+                </Link>
+
+                <Link
+                  href={{
+                    pathname: "/advisor/calculator",
+                  }}
+                >
+                  <button
+                    onClick={() => setName("Orders")}
+                    className={` w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
+                      open ? "hover:px-5" : "hover:px-0"
+                    } ${open ? "md:scale-100" : "md:scale-100"} ${
+                      open ? "scale-100" : "scale-0"
+                    }`}
+                  >
+                    <AgentIcon
+                      title="Calculator"
+                      icon=<BsFillCalculatorFill size="1.6rem" />
+                      open={open}
+                    />
+                    {open}
+                  </button>
+                </Link>
+
+                <Link
+                  href={{
+                    pathname: "/advisor/history",
+                  }}
+                >
+                  <button
+                    onClick={() => setName("Orders")}
+                    className={` w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
+                      open ? "hover:px-5" : "hover:px-0"
+                    } ${open ? "md:scale-100" : "md:scale-100"} ${
+                      open ? "scale-100" : "scale-0"
+                    }`}
+                  >
+                    <AgentIcon
+                      title="History"
+                      icon=<AiOutlineHistory size="1.6rem" />
+                      open={open}
+                    />
+                    {open}
+                  </button>
+                </Link>
+
+                <Link
+                  href={{
+                    pathname: "/advisor/reports",
+                  }}
+                >
+                  <button
+                    onClick={() => setName("Orders")}
+                    className={` w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
+                      open ? "hover:px-5" : "hover:px-0"
+                    } ${open ? "md:scale-100" : "md:scale-100"} ${
+                      open ? "scale-100" : "scale-0"
+                    }`}
+                  >
+                    <AgentIcon
+                      title="Reports"
+                      icon=<MdReportGmailerrorred size="1.6rem" />
                       open={open}
                     />
                     {open}
