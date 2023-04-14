@@ -111,7 +111,7 @@ export function Card({
         </div>
       </div>
       <Link
-        href={""}
+        href={"./view-profile"}
         className=" font-khulabold text-xs text-blue-500 underline pt-0"
       >
         View Profile

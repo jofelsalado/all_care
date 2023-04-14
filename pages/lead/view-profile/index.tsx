@@ -33,6 +33,26 @@ export default function ViewProfile() {
           </div>
         </div>
         <div className=" w-full">
+          <div className=" font-khulabold text-2xl mt-10">Qoutation</div>
+          <div className="text-start font-khulareg mt-3 flex flex-col">
+            <div>100</div>
+          </div>
+        </div>
+        <div className=" w-full">
+          <div className=" font-khulabold text-2xl mt-10">
+            Type of Insurance
+          </div>
+          <div className="text-start font-khulareg mt-3 flex flex-col">
+            <div>Health Insurance</div>
+          </div>
+        </div>
+        <div className=" w-full">
+          <div className=" font-khulabold text-2xl mt-10">Insurance</div>
+          <div className="text-start font-khulareg mt-3 flex flex-col">
+            <div>Medicare</div>
+          </div>
+        </div>
+        <div className=" w-full">
           <div className=" font-khulabold text-2xl mt-10">Credentials</div>
           <div className="text-start font-khulareg mt-3 flex flex-col">
             <Link

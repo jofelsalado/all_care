@@ -8,7 +8,7 @@ import { AdvisorLayout } from "../layout/advisor_layout";
 
 export default function NotifactionPage() {
   return (
-    <div className="px-10">
+    <div className="pl-10 pr-28">
       <AccountHeader header="Products" />
       <Link href={"./add-products"} className="order-1">
         <div className="mb-5 cursor-pointer text-white scale-100 hover:scale-125 duration-300 flex justify-center items-center gap-1 font-khulareg bg-blue-600 py-1 px-3 rounded-3xl text-center w-[7rem]">
@@ -58,7 +58,7 @@ export default function NotifactionPage() {
               Face-to-Face
             </td>
             <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
-              Active
+              Online
             </td>
             <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
               Mabilog
