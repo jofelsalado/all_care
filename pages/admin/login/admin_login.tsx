@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import Router from "next/router";
 import toast, { Toaster } from "react-hot-toast";
 import { id } from "date-fns/locale";
+import axios from 'axios';
+import React from "react";
 
 interface FormData {
   username: string;
@@ -14,6 +16,34 @@ interface FormData {
 }
 
 export function AdminLogin({ users }: any) {
+  const [posts, setPosts] = useState<any>([])
+  const apiEndPoint = 'http://localhost:5555/api/v1/auth/login';
+
+  // useEffect(()=> {
+  //   const getPosts = async () => {
+  //     const {data: res} = await axios.get(apiEndPoint);
+  //     setPosts(res);
+  //   };
+  //   getPosts();
+  // },[]);
+
+  const addPost = async () => {
+    const post = { 
+      email: "admin@allcarebusiness.com",
+      password: "admin2023",
+  };
+  await axios.post(apiEndPoint, post).then((response) => {
+    setPosts(response.data);
+  });
+ 
+  }
+
+
+
+
+
+
+
   const [form, setForm] = useState<FormData>({
     username: "",
     password: "",
@@ -33,7 +63,6 @@ export function AdminLogin({ users }: any) {
       toast.error("User not found!");
     }
   };
-
   return (
     <section className="pt-6">
       <div className="px-6 h-full text-gray-800">
@@ -50,6 +79,11 @@ export function AdminLogin({ users }: any) {
               <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
                 <p className="text-center font-semibold mx-4 mb-0">
                   Admin's Portal
+                  {/* {posts.title} */}
+                  {/* {posts.map((post:any) =>
+                    <div>{post.status}</div>
+                    )} */}
+                    {posts.status}
                 </p>
               </div>
 
@@ -89,6 +123,7 @@ export function AdminLogin({ users }: any) {
                     htmlFor="exampleCheck2"
                   >
                     Remember me
+                    
                   </label>
                 </div>
                 <a
@@ -102,7 +137,7 @@ export function AdminLogin({ users }: any) {
               <div className="text-center lg:text-left">
                 <button
                   type="button"
-                  onClick={handleClick}
+                  onClick={addPost}
                   className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                 >
                   Login
