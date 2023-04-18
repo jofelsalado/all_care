@@ -1,6 +1,6 @@
 import { UserLayout } from "../../layout/user_layout";
+import { LeadLayout } from "../../lead/layout/lead_layout";
 import { AccountHeader } from "../components/account_header";
-import { LeadLayout } from "../layout/lead_layout";
 
 import { FormRow } from "./components/form";
 
@@ -15,7 +15,7 @@ export default function ReportsPage() {
               <FormRow py="py-1.0" label="Date" />
               <FormRow py="py-1.0" label="Name" />
               <FormRow py="py-1.0" label="Email" />
-              <FormRow py="py-1.0" label="Monthly Income" />
+              <FormRow py="py-1.0" label="Monthly Net Income" />
             </div>
             <div className="flex flex-col gap-10 w-[12.9rem]">
               <FormRow py="py-1.0" label="Contact No." />

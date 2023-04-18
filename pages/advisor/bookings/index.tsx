@@ -5,6 +5,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { BsCheckCircle } from "react-icons/bs";
 import { AdvisorLayout } from "../layout/advisor_layout";
 import React from "react";
+import { MdOutlineDisabledByDefault } from "react-icons/md";
 
 export default function BookingsPage() {
   const [showModal, setShowModal] = React.useState(false);
@@ -79,7 +80,10 @@ export default function BookingsPage() {
                   Name
                 </th>
                 <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
-                  Type
+                  Type of Meeting
+                </th>
+                <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
+                  Insurance
                 </th>
                 <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
                   Actions
@@ -103,7 +107,10 @@ export default function BookingsPage() {
                   AJ Ybanerz
                 </td>
                 <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
-                  Health
+                  F2F
+                </td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                  Medicare
                 </td>
                 <td className="p-3 text-sm whitespace-nowrap ">
                   <div className="flex gap-2">
@@ -115,7 +122,7 @@ export default function BookingsPage() {
 
                     <button>
                       <div className="cursor-pointer hover:text-red-500 scale-100 hover:scale-125 duration-300">
-                        <RiDeleteBinLine size="1.2rem" />
+                        <MdOutlineDisabledByDefault size="1.2rem" />
                       </div>
                     </button>
                   </div>
@@ -142,7 +149,10 @@ export default function BookingsPage() {
                   Mae Mabilog
                 </td>
                 <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
-                  Health
+                  F2F
+                </td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                  Mericare
                 </td>
                 <td className="p-3 text-sm whitespace-nowrap ">
                   <div className="flex gap-2">
@@ -154,7 +164,7 @@ export default function BookingsPage() {
 
                     <button>
                       <div className="cursor-pointer hover:text-red-500 scale-100 hover:scale-125 duration-300">
-                        <RiDeleteBinLine size="1.2rem" />
+                        <MdOutlineDisabledByDefault size="1.2rem" />
                       </div>
                     </button>
                   </div>
@@ -181,7 +191,10 @@ export default function BookingsPage() {
                   James Villarojo
                 </td>
                 <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
-                  Health
+                  F2F
+                </td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                  Medicare
                 </td>
                 <td className="p-3 text-sm whitespace-nowrap ">
                   <div className="flex gap-2">
@@ -193,7 +206,7 @@ export default function BookingsPage() {
 
                     <button>
                       <div className="cursor-pointer hover:text-red-500 scale-100 hover:scale-125 duration-300">
-                        <RiDeleteBinLine size="1.2rem" />
+                        <MdOutlineDisabledByDefault size="1.2rem" />
                       </div>
                     </button>
                   </div>

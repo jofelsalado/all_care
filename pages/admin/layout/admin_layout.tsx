@@ -5,7 +5,7 @@ import Router from "next/router";
 import { MdOutlineManageAccounts, MdOutlinePrivacyTip } from "react-icons/md";
 
 import { RxDashboard } from "react-icons/rx";
-import { BsBuilding, BsFillPersonLinesFill } from "react-icons/bs";
+import { TbReportAnalytics } from "react-icons/tb";
 import { GiBlackHandShield, GiHamburgerMenu } from "react-icons/gi";
 import { AgentIcon } from "./components/user_icon";
 import { CiLogout } from "react-icons/ci";
@@ -13,7 +13,7 @@ import pic3 from "../../../public/images/pic3.jpg";
 import Link from "next/link";
 import { IoMdNotifications } from "react-icons/io";
 
-export function AdminLayout({ children, users}: any) {
+export function AdminLayout({ children, users }: any) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("Home");
   const [opensub, setOpensub] = useState(false);
@@ -119,7 +119,6 @@ export function AdminLayout({ children, users}: any) {
                 Admin
               </p>
             </div>
-
             <Link
               href={{
                 pathname: "/admin/account",
@@ -161,7 +160,26 @@ export function AdminLayout({ children, users}: any) {
                 />
               </button>
             </Link>
-
+            <Link
+              href={{
+                pathname: "/admin/transaction-report",
+              }}
+            >
+              <button
+                onClick={() => setName("Notifications")}
+                className={`w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
+                  open ? "hover:px-5" : "hover:px-0"
+                } ${open ? "md:scale-100" : "md:scale-100"} ${
+                  open ? "scale-100" : "scale-0"
+                }`}
+              >
+                <AgentIcon
+                  title={"Report"}
+                  icon=<TbReportAnalytics size="1.6rem" />
+                  open={open}
+                />
+              </button>
+            </Link>
             <Link
               href={{
                 pathname: "/",

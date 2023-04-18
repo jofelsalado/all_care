@@ -6,7 +6,7 @@ import { AddAccount } from "./components/add_account";
 export default function Page() {
   return (
     <div className="w-full">
-      <AccountHeader header="Accounts" />
+      <AccountHeader header="Financial Advisor Accounts" />
       <div className="px-10">
         <AddAccount />
       </div>

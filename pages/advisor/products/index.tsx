@@ -9,7 +9,7 @@ import { AdvisorLayout } from "../layout/advisor_layout";
 export default function NotifactionPage() {
   return (
     <div className="pl-10 pr-28">
-      <AccountHeader header="Products" />
+      <AccountHeader header="Insurance Products" />
       <Link href={"./add-products"} className="order-1">
         <div className="mb-5 cursor-pointer text-white scale-100 hover:scale-125 duration-300 flex justify-center items-center gap-1 font-khulareg bg-blue-600 py-1 px-3 rounded-3xl text-center w-[7rem]">
           ADD
