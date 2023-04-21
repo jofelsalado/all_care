@@ -64,7 +64,7 @@ export default function BookingsPage() {
           </>
         ) : null}
       </>
-      <AccountHeader header="Manage Bookings" />
+      <AccountHeader header="Manage Bookings" name="James Villarojo" />
       <div className="px-10 w-full">
         <div className="overflow-auto rounded-lg shadow  w-full ">
           <table className="w-full">

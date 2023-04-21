@@ -8,7 +8,7 @@ import { BiSortAlt2 } from "react-icons/bi";
 export default function ViewAdvisorsPage({ label, desc, py }: any) {
   return (
     <div className="">
-      <AccountHeader header="View Advisors" />
+      <AccountHeader header="View Advisors" name="James Villarojo" />
       <div className=" w-full flex  justify-center items-center gap-4 p-10 md:flex-wrap border-t-2  ">
         <div className="w-full h-[3rem] flex flex-row justify-evenly items-center px-10 border-b-2 pb-10">
           <form className="w-[15rem]">

@@ -6,7 +6,7 @@ import { InputField } from "./components/input_field";
 export default function ProfilePage() {
   return (
     <div className="w-full">
-      <AccountHeader header="Edit Profile" />
+      <AccountHeader header="Edit Profile" name="James Villarojo" />
       <div className="flex flex-col justify-center items-center gap-12 w-full">
         <div className="flex flex-col justify-center items-center bg-white rounded-xl w-[70rem] h-[30rem] gap-12">
           <div className="flex flex-wrap  justify-evenly items-evenly gap-12 ">

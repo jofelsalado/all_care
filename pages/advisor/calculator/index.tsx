@@ -7,7 +7,7 @@ import { FormRow } from "./components/form";
 export default function ReportsPage() {
   return (
     <div>
-      <AccountHeader header="Financial Calculator" />
+      <AccountHeader header="Financial Calculator" name="James Villarojo" />
       <div className="w-full flex flex-col ">
         <div className="bg-slate-200 w-full  py-10 rounded-lg flex flex-row justify-around items-center ">
           <div className="flex flex-wrap h-full justify-around items-start gap-10 w-full">

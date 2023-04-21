@@ -1,6 +1,6 @@
 import { UserLayout } from "../../layout/user_layout";
+import { LeadLayout } from "../../lead/layout/lead_layout";
 import { AccountHeader } from "../components/account_header";
-import { LeadLayout } from "../layout/lead_layout";
 
 import { FormRow } from "./components/form";
 
