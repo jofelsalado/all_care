@@ -121,7 +121,7 @@ export function AddAccount() {
                 <input
                   className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
                   type="text"
-                  placeholder="axxxx@gmail.com"
+                  placeholder="e.g juan@gmail.com"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                 />
@@ -134,7 +134,7 @@ export function AddAccount() {
                 <input
                   className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
                   type="text"
-                  placeholder="kn542"
+                  placeholder=""
                   value={form.username}
                   onChange={(e) =>
                     setForm({ ...form, username: e.target.value })
@@ -210,7 +210,7 @@ export function AddAccount() {
                 <input
                   className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
                   type="text"
-                  placeholder="09XXXXXXXXX"
+                  placeholder="+639*********"
                   value={form.contactnum}
                   onChange={(e) =>
                     setForm({ ...form, contactnum: e.target.value })
@@ -225,7 +225,7 @@ export function AddAccount() {
                 <input
                   className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
                   type="text"
-                  placeholder="e.g Mandaue City"
+                  placeholder="e.g Street Name, Building, House No."
                   value={form.address}
                   onChange={(e) =>
                     setForm({ ...form, address: e.target.value })
@@ -268,7 +268,6 @@ export function AddAccount() {
                   id="countries"
                   className="bg-gray-50 borderw-[20rem] grow xl:grow-0 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                 >
-                  <option selected>Select Sex</option>
                   <option value="US">Male</option>
                   <option value="CA">Female</option>
                 </select>

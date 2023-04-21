@@ -12,18 +12,20 @@ export default function ProfilePage() {
       <AccountHeader header="Edit Profile" name="James Villarojo" />
       <div className="flex flex-col justify-center items-center gap-12 w-full">
         <div className="flex flex-col justify-center items-center bg-white rounded-xl w-[70rem] py-20 gap-12">
-          
           <div className="flex flex-wrap  justify-evenly items-start gap-12 ">
-         
             <div className="flex flex-col  justify-center gap-12 items-center">
-              <InputField name="First Name" />
-              <InputField name="Phone Number" />
-              <InputField name="Email" />
+              <InputField name="First Name" placeholder="e.g Juan" />
+              <InputField name="Middle Name" placeholder="e.g Santa" />
+              <InputField name="Contact Number" placeholder="+639*********" />
+              <InputField name="Email" placeholder="e.g juan@gmail.com" />
             </div>
             <div className="flex flex-col   justify-center gap-12 items-center">
-              <InputField name="Last Name" />
-              <InputField name="Location" />
-              <InputField name="Age" />
+              <InputField name="Last Name" placeholder="e.g Dela Cruz" />
+              <InputField
+                name="Address"
+                placeholder="e.g Street Name, Building, House No."
+              />
+              <InputField name="Date of Birth" placeholder="MM/DD/YY" />
               <div className="w-[20rem] grow xl:grow-0">
                 <label className="block mb-2 text-sm font-medium text-gray-900  font-khulabold">
                   Upload Picture

@@ -4,6 +4,13 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Link from "next/link";
+import pic3 from "../../../public/images/pic3.jpg";
+import Image from "next/image";
+import {
+  AiFillFacebook,
+  AiFillInstagram,
+  AiFillLinkedin,
+} from "react-icons/ai";
 declare module "react" {
   interface HTMLProps<T> {
     size?: string;
@@ -16,69 +23,33 @@ export default function ViewProfile() {
   return (
     <div className="flex">
       <div className=" h-auto w-[20rem] flex flex-col items-center px-12 py-10 bg-slate-200">
+        <div className="flex flex-col bg-red-500 rounded-full w-[10rem] h-[10rem] mb-10 overflow-hidden">
+          <Image
+            src={pic3}
+            alt="Picture of the author"
+            width={500}
+            height={500}
+          />
+        </div>
         <div className="w-full">
           <div className=" font-khulabold text-2xl">Mae Mabilog</div>
-          <div className="text-center font-khulareg mt-3 ">
-            Certified Financial Planner Works at Sunlife
+        </div>
+        <div className=" w-full">
+          <div className=" font-khulabold text-2xl mt-10">Company</div>
+          <div className="text-start font-khulareg mt-3 flex flex-col">
+            <div>Sun Life</div>
           </div>
         </div>
-        <div></div>
         <div className=" w-full">
           <div className=" font-khulabold text-2xl mt-10">Expertise</div>
           <div className="text-start font-khulareg mt-3 flex flex-col">
-            <div>Business</div>
-            <div>Owners</div>
-            <div>Widows</div>
-            <div>Single</div>
+            <div>Tradition Insurance</div>
           </div>
         </div>
+
         <div className=" w-full">
-          <div className=" font-khulabold text-2xl mt-10">Qoutation</div>
-          <div className="text-start font-khulareg mt-3 flex flex-col">
-            <div>100</div>
-          </div>
-        </div>
-        <div className=" w-full">
-          <div className=" font-khulabold text-2xl mt-10">
-            Type of Insurance
-          </div>
-          <div className="text-start font-khulareg mt-3 flex flex-col">
-            <div>Health Insurance</div>
-          </div>
-        </div>
-        <div className=" w-full">
-          <div className=" font-khulabold text-2xl mt-10">Insurance</div>
-          <div className="text-start font-khulareg mt-3 flex flex-col">
-            <div>Medicare</div>
-          </div>
-        </div>
-        <div className=" w-full">
-          <div className=" font-khulabold text-2xl mt-10">Credentials</div>
-          <div className="text-start font-khulareg mt-3 flex flex-col">
-            <Link
-              className="hover:text-blue-500 hover:underline"
-              target={"_blank"}
-              href={
-                "https://www.credly.com/badges/b995099d-7e26-42b3-b3a0-f40ff9d9f656/linked_in_profile"
-              }
-            >
-              Certified Financial Planner
-            </Link>
-          </div>
-        </div>
-        <div className=" w-full">
-          <div className=" font-khulabold text-2xl mt-10">References</div>
-          <div className="text-start font-khulareg mt-3 flex flex-col">
-            <Link
-              className="hover:text-blue-500 hover:underline"
-              target={"_blank"}
-              href={
-                "https://www.sunlife.com.ph/en/insurance/health-protection/sun-cancer-care/"
-              }
-            >
-              Sun Life
-            </Link>
-          </div>
+          <div className=" font-khulabold text-2xl mt-10">Type of Meeting</div>
+          <div>Face to Face</div>
         </div>
       </div>
       <div className=" h-auto w-full px-12 py-10 flex flex-col gap-10">
@@ -103,28 +74,57 @@ export default function ViewProfile() {
           </div>
         </div>
         <div className="">
-          <div className="font-khulabold text-xl">About Me</div>
-          <div className="font-khulareg text-lg mt-2">
-            Experienced and driven financial advisor with over five years of
-            experience providing clients with optimal assistance with retirement
-            planning, estate planning, investment advisce, tax strategies, and
-            overall support managing their finances, Proven track record of
-            competitive market share expansion and assisting corporation in
-            reaching goals. Driven and detail-oriented with the ability to
-            thrive in high pressure environments. Adept at developing key
-            relationships and furthering business development.
+          <div className="font-khulabold text-xl">Social Links</div>
+          <div className="font-khulareg text-lg mt-2 flex flex-row gap-10 justify-start items-center">
+            <Link
+              href={"https://www.facebook.com/mae.mabilog.1?mibextid=LQQJ4d"}
+              target="_blank"
+            >
+              <AiFillFacebook size={35} />
+            </Link>
+            <Link
+              href={"https://instagram.com/maeye_ng?igshid=ZWIzMWE5ZmU3Zg=="}
+              target="_blank"
+            >
+              <AiFillInstagram size={35} />
+            </Link>
+            <Link
+              href={"https://www.linkedin.com/in/mae-mabilog-b45185248"}
+              target="_blank"
+            >
+              <AiFillLinkedin size={35} />
+            </Link>
           </div>
         </div>
-        <div className=" flex flex-col gap-2">
-          <div className="font-khulabold text-xl">Education</div>
-          <div className="font-khulabold text-md">University of Cebu</div>
-          <div className="font-khulareg text-md">2020 - 2023</div>
-          <div className="font-khulareg text-md">
-            Finance and Economics Bachelors
+
+        <div className="">
+          <div className="font-khulabold text-xl">Type of Insurance</div>
+          <div className="font-khulareg text-lg mt-2">Health Insurance</div>
+        </div>
+
+        <div className="">
+          <div className="font-khulabold text-xl">Insurance Products</div>
+          <div className="font-khulareg text-lg mt-2">Medicare</div>
+        </div>
+
+        <div className="">
+          <div className="font-khulabold text-xl">Insurance Product Link</div>
+          <div className="font-khulareg text-lg mt-2">
+            <div className="text-start font-khulareg mt-3 flex flex-col">
+              <Link
+                className="hover:text-blue-500 hover:underline"
+                target={"_blank"}
+                href={
+                  "https://www.sunlife.com.ph/en/insurance/health-protection/sun-cancer-care/"
+                }
+              >
+                Sun Life
+              </Link>
+            </div>
           </div>
         </div>
         <div className="">
-          <div className="font-khulabold text-xl">Personal Hobbies</div>
+          <div className="font-khulabold text-xl">Insurance Product Name</div>
           <div className="font-khulareg text-lg mt-2">
             Experienced and driven financial advisor with over five years of
             experience providing clients with optimal assistance with retirement
@@ -136,6 +136,7 @@ export default function ViewProfile() {
             relationships and furthering business development.
           </div>
         </div>
+
         <div className=" flex flex-col gap-5">
           <div className="font-khulabold text-xl text-center">
             Book a Meeting

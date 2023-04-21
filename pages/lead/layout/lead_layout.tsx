@@ -219,7 +219,7 @@ export function LeadLayout({ children }: any) {
 
                 <Link
                   href={{
-                    pathname: "/lead/history",
+                    pathname: "/lead/reports",
                   }}
                 >
                   <button
@@ -231,8 +231,8 @@ export function LeadLayout({ children }: any) {
                     }`}
                   >
                     <AgentIcon
-                      title="History"
-                      icon=<FaRegHandshake size="1.6rem" />
+                      title="Reports"
+                      icon=<MdReportGmailerrorred size="1.6rem" />
                       open={open}
                     />
                     {open}
@@ -261,7 +261,7 @@ export function LeadLayout({ children }: any) {
                 </Link>
                 <Link
                   href={{
-                    pathname: "/lead/reports",
+                    pathname: "/lead/history",
                   }}
                 >
                   <button
@@ -273,8 +273,8 @@ export function LeadLayout({ children }: any) {
                     }`}
                   >
                     <AgentIcon
-                      title="Reports"
-                      icon=<MdReportGmailerrorred size="1.6rem" />
+                      title="History"
+                      icon=<FaRegHandshake size="1.6rem" />
                       open={open}
                     />
                     {open}

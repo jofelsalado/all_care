@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { AiOutlineBell } from "react-icons/ai";
 import pic3 from "../../../public/images/pic3.jpg";
 export function AccountHeader({ header, img, name }: any) {
@@ -15,9 +16,12 @@ export function AccountHeader({ header, img, name }: any) {
           <div className="flex justify-center items-center">
             <AiOutlineBell size="1.5rem" />
           </div>
-          <div className="flex justify-center items-center">
+          <Link
+            className="flex justify-center items-center"
+            href={"./view-profile"}
+          >
             <Image src={pic3} className="rounded-full w-[3rem] " alt="Avatar" />
-          </div>
+          </Link>
         </div>
       </div>
     </div>

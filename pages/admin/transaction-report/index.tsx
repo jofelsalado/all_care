@@ -1,11 +1,24 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { HydrationProvider, Client } from "react-hydration-provider";
+import {
+  AiFillCheckCircle,
+  AiOutlineCheck,
+  AiOutlineCheckCircle,
+} from "react-icons/ai";
 import { BiSortAlt2 } from "react-icons/bi";
+import { FaSort } from "react-icons/fa";
 import { UserLayout } from "../../layout/user_layout";
 import { AccountHeader } from "../components/account_header";
 import { AdminLayout } from "../layout/admin_layout";
 
 export default function ReportPage() {
+  var color = "";
+  const [click, setClick] = useState(false);
+  if (click == true) {
+    color = "green";
+  } else {
+    color = "black";
+  }
   return (
     <HydrationProvider>
       <main>
@@ -19,7 +32,7 @@ export default function ReportPage() {
               >
                 Search
               </label>
-              <div className="relative">
+              {/* <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                   <svg
                     aria-hidden="true"
@@ -50,7 +63,7 @@ export default function ReportPage() {
                 >
                   Search
                 </button>
-              </div>
+              </div> */}
             </form>
             <select
               id="countries"
@@ -75,15 +88,19 @@ export default function ReportPage() {
               type="button"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
-              Get Match
+              Print Report
             </button>
           </div>
           <div className="flex justify-center items-center pl-[2.5rem] pr-[6rem]">
             <table className="w-full">
               <thead className=" bg-[#f2f8ff] border-2 border-gray-200 ">
                 <tr className="pt-10">
-                  <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
-                    Date Issued
+                  <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left flex items-center gap-5">
+                    <div> Date Issued</div>
+                    <button>
+                      {" "}
+                      <FaSort size={13} />
+                    </button>
                   </th>
                   <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
                     Complaint ID
@@ -95,25 +112,27 @@ export default function ReportPage() {
                     Insurance
                   </th>
                   <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
-                    Role
-                  </th>
-                  <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
-                    Action
+                    Type of Meeting
                   </th>
                 </tr>
               </thead>
-              <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">1</td>
-              <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">1</td>
-              <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
-                Alondra Buhawi
-              </td>
-              <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
-                Widowed
-              </td>
-              <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
-                Virtual
-              </td>
-              <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">1</td>
+              <tr className="bg-white hover:bg-gradient-to-r from-[#588cfc] to-pink-400  hover:text-white scale-100 laptop:scale-100 laptop:hover:scale-105 duration-300">
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap ">
+                  1
+                </td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                  1
+                </td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                  Alondra Buhawi
+                </td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                  Widowed
+                </td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                  Virtual
+                </td>
+              </tr>
             </table>
           </div>
         </Client>

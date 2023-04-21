@@ -2,7 +2,11 @@ import { useState } from "react";
 import Image from "next/image";
 import Router from "next/router";
 
-import { MdOutlineManageAccounts, MdOutlinePrivacyTip } from "react-icons/md";
+import {
+  MdOutlineManageAccounts,
+  MdOutlinePrivacyTip,
+  MdReportGmailerrorred,
+} from "react-icons/md";
 
 import { RxDashboard } from "react-icons/rx";
 import { TbReportAnalytics } from "react-icons/tb";
@@ -12,6 +16,7 @@ import { CiLogout } from "react-icons/ci";
 import pic3 from "../../../public/images/pic3.jpg";
 import Link from "next/link";
 import { IoMdNotifications } from "react-icons/io";
+import { AiFillStar } from "react-icons/ai";
 
 export function AdminLayout({ children, users }: any) {
   const [open, setOpen] = useState(false);
@@ -121,27 +126,6 @@ export function AdminLayout({ children, users }: any) {
             </div>
             <Link
               href={{
-                pathname: "/admin/account",
-              }}
-            >
-              <button
-                onClick={() => setName("Account")}
-                className={`w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
-                  open ? "hover:px-5" : "hover:px-0"
-                } ${open ? "md:scale-100" : "md:scale-100"} ${
-                  open ? "scale-100" : "scale-0"
-                }`}
-              >
-                <AgentIcon
-                  title="Accounts"
-                  icon=<MdOutlineManageAccounts size="1.6rem" />
-                  open={open}
-                />
-              </button>
-            </Link>
-
-            <Link
-              href={{
                 pathname: "/admin/notification",
               }}
             >
@@ -162,6 +146,70 @@ export function AdminLayout({ children, users }: any) {
             </Link>
             <Link
               href={{
+                pathname: "/admin/account",
+              }}
+            >
+              <button
+                onClick={() => setName("Account")}
+                className={`w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
+                  open ? "hover:px-5" : "hover:px-0"
+                } ${open ? "md:scale-100" : "md:scale-100"} ${
+                  open ? "scale-100" : "scale-0"
+                }`}
+              >
+                <AgentIcon
+                  title="Accounts"
+                  icon=<MdOutlineManageAccounts size="1.6rem" />
+                  open={open}
+                />
+              </button>
+            </Link>
+            <Link
+              href={{
+                pathname: "/admin/reports",
+              }}
+            >
+              <button
+                onClick={() => setName("Orders")}
+                className={` w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
+                  open ? "hover:px-5" : "hover:px-0"
+                } ${open ? "md:scale-100" : "md:scale-100"} ${
+                  open ? "scale-100" : "scale-0"
+                }`}
+              >
+                <AgentIcon
+                  title="Reports"
+                  icon=<MdReportGmailerrorred size="1.6rem" />
+                  open={open}
+                />
+                {open}
+              </button>
+            </Link>
+
+            <Link
+              href={{
+                pathname: "/admin/reviews",
+              }}
+            >
+              <button
+                onClick={() => setName("Orders")}
+                className={` w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
+                  open ? "hover:px-5" : "hover:px-0"
+                } ${open ? "md:scale-100" : "md:scale-100"} ${
+                  open ? "scale-100" : "scale-0"
+                }`}
+              >
+                <AgentIcon
+                  title="Reviews"
+                  icon=<AiFillStar size="1.6rem" />
+                  open={open}
+                />
+                {open}
+              </button>
+            </Link>
+
+            <Link
+              href={{
                 pathname: "/admin/transaction-report",
               }}
             >
@@ -174,12 +222,13 @@ export function AdminLayout({ children, users }: any) {
                 }`}
               >
                 <AgentIcon
-                  title={"Report"}
+                  title={"Transaction Report"}
                   icon=<TbReportAnalytics size="1.6rem" />
                   open={open}
                 />
               </button>
             </Link>
+
             <Link
               href={{
                 pathname: "/",

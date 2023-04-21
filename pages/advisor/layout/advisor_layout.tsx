@@ -7,6 +7,7 @@ import { FaHistory } from "react-icons/fa";
 import { BsColumns, BsFillCalculatorFill } from "react-icons/bs";
 import { BsPersonSquare } from "react-icons/bs";
 import {
+  AiFillStar,
   AiOutlineBell,
   AiOutlineHistory,
   AiTwotoneInsurance,
@@ -170,6 +171,27 @@ export function AdvisorLayout({ children }: any) {
                     />
                   </button>
                 </Link>
+                <Link
+                  href={{
+                    pathname: "/advisor/calculator",
+                  }}
+                >
+                  <button
+                    onClick={() => setName("Orders")}
+                    className={` w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
+                      open ? "hover:px-5" : "hover:px-0"
+                    } ${open ? "md:scale-100" : "md:scale-100"} ${
+                      open ? "scale-100" : "scale-0"
+                    }`}
+                  >
+                    <AgentIcon
+                      title="Calculator"
+                      icon=<BsFillCalculatorFill size="1.6rem" />
+                      open={open}
+                    />
+                    {open}
+                  </button>
+                </Link>
 
                 <Link
                   href={{
@@ -236,10 +258,9 @@ export function AdvisorLayout({ children }: any) {
                     {open}
                   </button>
                 </Link>
-
                 <Link
                   href={{
-                    pathname: "/advisor/calculator",
+                    pathname: "/advisor/reports",
                   }}
                 >
                   <button
@@ -251,8 +272,30 @@ export function AdvisorLayout({ children }: any) {
                     }`}
                   >
                     <AgentIcon
-                      title="Calculator"
-                      icon=<BsFillCalculatorFill size="1.6rem" />
+                      title="Reports"
+                      icon=<MdReportGmailerrorred size="1.6rem" />
+                      open={open}
+                    />
+                    {open}
+                  </button>
+                </Link>
+
+                <Link
+                  href={{
+                    pathname: "/advisor/reviews",
+                  }}
+                >
+                  <button
+                    onClick={() => setName("Orders")}
+                    className={` w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
+                      open ? "hover:px-5" : "hover:px-0"
+                    } ${open ? "md:scale-100" : "md:scale-100"} ${
+                      open ? "scale-100" : "scale-0"
+                    }`}
+                  >
+                    <AgentIcon
+                      title="Reviews"
+                      icon=<AiFillStar size="1.6rem" />
                       open={open}
                     />
                     {open}
@@ -275,28 +318,6 @@ export function AdvisorLayout({ children }: any) {
                     <AgentIcon
                       title="History"
                       icon=<AiOutlineHistory size="1.6rem" />
-                      open={open}
-                    />
-                    {open}
-                  </button>
-                </Link>
-
-                <Link
-                  href={{
-                    pathname: "/advisor/reports",
-                  }}
-                >
-                  <button
-                    onClick={() => setName("Orders")}
-                    className={` w-custTitle md:w-full focus:outline-none focus:ring focus:ring-[#588cfc] hover:bg-gradient-to-r from-[#588cfc] to-pink-400 rounded-lg duration-200  ${
-                      open ? "hover:px-5" : "hover:px-0"
-                    } ${open ? "md:scale-100" : "md:scale-100"} ${
-                      open ? "scale-100" : "scale-0"
-                    }`}
-                  >
-                    <AgentIcon
-                      title="Reports"
-                      icon=<MdReportGmailerrorred size="1.6rem" />
                       open={open}
                     />
                     {open}

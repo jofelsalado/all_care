@@ -29,7 +29,7 @@ export default function ProfilePage() {
                 <input
                   className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
                   type="text"
-                  placeholder="First Name"
+                  placeholder="e.g Juan"
                 />
               </div>
               <div className={`w-[20rem] grow xl:grow-0 `}>
@@ -132,7 +132,7 @@ export default function ProfilePage() {
                 <input
                   className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
                   type="text"
-                  placeholder="Middle Name"
+                  placeholder="e.g Santa"
                 />
               </div>
               <div className={`w-[20rem] grow xl:grow-0 `}>
@@ -171,7 +171,7 @@ export default function ProfilePage() {
                 <input
                   className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
                   type="text"
-                  placeholder="Birthdate"
+                  placeholder="MM/DD/YY"
                 />
               </div>
 

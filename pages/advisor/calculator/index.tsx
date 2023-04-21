@@ -1,6 +1,7 @@
 import { UserLayout } from "../../layout/user_layout";
 import { LeadLayout } from "../../lead/layout/lead_layout";
 import { AccountHeader } from "../components/account_header";
+import { AdvisorLayout } from "../layout/advisor_layout";
 
 import { FormRow } from "./components/form";
 
@@ -12,15 +13,190 @@ export default function ReportsPage() {
         <div className="bg-slate-200 w-full  py-10 rounded-lg flex flex-row justify-around items-center ">
           <div className="flex flex-wrap h-full justify-around items-start gap-10 w-full">
             <div className="flex flex-col gap-10 w-[12.9rem]">
-              <FormRow py="py-1.0" label="Date" />
-              <FormRow py="py-1.0" label="Name" />
-              <FormRow py="py-1.0" label="Email" />
-              <FormRow py="py-1.0" label="Monthly Net Income" />
+              <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                <div className=" shrink-0">Date </div>
+                <input
+                  disabled={false}
+                  type="text"
+                  className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                  id="exampleFormControlInput1"
+                  placeholder="Date"
+                />
+              </div>
+              <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                <div className=" shrink-0">Name </div>
+                <input
+                  disabled={false}
+                  type="text"
+                  className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                  id="exampleFormControlInput1"
+                  placeholder=""
+                />
+              </div>
+              <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                <div className=" shrink-0">Email </div>
+                <input
+                  disabled={false}
+                  type="text"
+                  className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                  id="exampleFormControlInput1"
+                  placeholder=""
+                />
+              </div>
+              <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                <div className=" shrink-0">Monthly Net Income </div>
+                <input
+                  disabled={false}
+                  type="text"
+                  className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                  id="exampleFormControlInput1"
+                  placeholder=""
+                />
+              </div>
             </div>
             <div className="flex flex-col gap-10 w-[12.9rem]">
-              <FormRow py="py-1.0" label="Contact No." />
-              <FormRow py="py-1.0" label="Current Age" />
-              <FormRow py="py-1.0" label="Peak Age" />
+              <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                <div className=" shrink-0">Contact Number </div>
+                <input
+                  disabled={false}
+                  type="text"
+                  className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                  id="exampleFormControlInput1"
+                  placeholder=""
+                />
+              </div>
+              <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                <div className=" shrink-0">Current Age </div>
+                <input
+                  disabled={false}
+                  type="text"
+                  className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                  id="exampleFormControlInput1"
+                  placeholder=""
+                />
+              </div>
+              <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                <div className=" shrink-0">Peak Age</div>
+                <input
+                  disabled={false}
+                  type="text"
+                  className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                  id="exampleFormControlInput1"
+                  placeholder=""
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -28,10 +204,60 @@ export default function ReportsPage() {
           <div className="flex flex-row w-full justify-around bg-blue-200 rounded-xl p-10 items-center">
             <div className="">
               <div>Operating Activities</div>
-              <div className="flex flex-col w-min mt-10">
+              <div className="flex flex-col w-min mt-10 gap-10">
                 <div className="flex flex-row w-[27rem] gap-5">
-                  <FormRow py="py-1.0" label="Description" />
-                  <FormRow py="py-1.0" label="Cost" />
+                  <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                    <div className=" shrink-0">Description </div>
+                    <input
+                      disabled={false}
+                      type="text"
+                      className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                      id="exampleFormControlInput1"
+                      placeholder=""
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                    <div className=" shrink-0">Cost </div>
+                    <input
+                      disabled={false}
+                      type="text"
+                      className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                      id="exampleFormControlInput1"
+                      placeholder=""
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-row w-[27rem] gap-5">
                   <FormRow py="py-1.0" label="" />
@@ -52,12 +278,112 @@ export default function ReportsPage() {
                   <div className="text-green-500 font-khulaXbold">HEALTHY </div>
                 </div>
               </div>
-              <div className="flex flex-col mt-10">
+              <div className="flex flex-col mt-10 gap-10">
                 {" "}
-                <FormRow py="py-1.0" label="% of Monthly Income" />
-                <FormRow py="py-1.0" label="Recommended Limit" />
-                <FormRow py="py-1.0" label="Unused Allocation" />
-                <FormRow py="py-1.0" label="Amount Exceeding Limit" />
+                <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                  <div className=" shrink-0">% of Monthly Income </div>
+                  <input
+                    disabled={true}
+                    type="text"
+                    className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-slate-200 bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                </div>
+                <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                  <div className=" shrink-0">Recommended Limit </div>
+                  <input
+                    disabled={true}
+                    type="text"
+                    className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-slate-200 bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                </div>
+                <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                  <div className=" shrink-0">Unused Allocation </div>
+                  <input
+                    disabled={true}
+                    type="text"
+                    className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-slate-200 bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                </div>
+                <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                  <div className=" shrink-0">Amount Exceeding Limit </div>
+                  <input
+                    disabled={true}
+                    type="text"
+                    className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-slate-200 bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -65,10 +391,60 @@ export default function ReportsPage() {
           <div className="flex flex-row w-full justify-around bg-blue-200 rounded-xl p-10 items-center">
             <div className="">
               <div>Investing Activities</div>
-              <div className="flex flex-col w-min mt-10">
+              <div className="flex flex-col w-min mt-10 gap-10">
                 <div className="flex flex-row w-[27rem] gap-5">
-                  <FormRow py="py-1.0" label="Description" />
-                  <FormRow py="py-1.0" label="Cost" />
+                  <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                    <div className=" shrink-0">Description </div>
+                    <input
+                      disabled={false}
+                      type="text"
+                      className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                      id="exampleFormControlInput1"
+                      placeholder=""
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                    <div className=" shrink-0">Cost</div>
+                    <input
+                      disabled={false}
+                      type="text"
+                      className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                      id="exampleFormControlInput1"
+                      placeholder=""
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-row w-[27rem] gap-5">
                   <FormRow py="py-1.0" label="" />
@@ -89,11 +465,86 @@ export default function ReportsPage() {
                   <div className="text-green-500 font-khulaXbold">HEALTHY </div>
                 </div>
               </div>
-              <div className="flex flex-col mt-10">
+              <div className="flex flex-col mt-10 gap-10">
                 {" "}
-                <FormRow py="py-1.0" label="% of Monthly Income" />
-                <FormRow py="py-1.0" label="Minimum Amount Needed" />
-                <FormRow py="py-1.0" label="Amount Not Invested" />
+                <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                  <div className=" shrink-0">% of Monthly Income </div>
+                  <input
+                    disabled={true}
+                    type="text"
+                    className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-slate-200 bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                </div>
+                <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                  <div className=" shrink-0">Minimum Amount Needed </div>
+                  <input
+                    disabled={true}
+                    type="text"
+                    className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-slate-200 bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                </div>
+                <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                  <div className=" shrink-0">Amount Not Invested </div>
+                  <input
+                    disabled={true}
+                    type="text"
+                    className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-slate-200 bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -101,10 +552,60 @@ export default function ReportsPage() {
           <div className="flex flex-row w-full justify-around bg-blue-200 rounded-xl p-10 items-center">
             <div className="">
               <div>Financing Activities</div>
-              <div className="flex flex-col w-min mt-10">
+              <div className="flex flex-col w-min mt-10 gap-10">
                 <div className="flex flex-row w-[27rem] gap-5">
-                  <FormRow py="py-1.0" label="Description" />
-                  <FormRow py="py-1.0" label="Cost" />
+                  <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                    <div className=" shrink-0">Description</div>
+                    <input
+                      disabled={false}
+                      type="text"
+                      className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                      id="exampleFormControlInput1"
+                      placeholder=""
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                    <div className=" shrink-0">Cost </div>
+                    <input
+                      disabled={false}
+                      type="text"
+                      className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                      id="exampleFormControlInput1"
+                      placeholder=""
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-row w-[27rem] gap-5">
                   <FormRow py="py-1.0" label="" />
@@ -125,11 +626,86 @@ export default function ReportsPage() {
                   <div className="text-red-500 font-khulaXbold">UNHEALTHY </div>
                 </div>
               </div>
-              <div className="flex flex-col mt-10">
+              <div className="flex flex-col mt-10 gap-10">
                 {" "}
-                <FormRow py="py-1.0" label="% of Monthly Income" />
-                <FormRow py="py-1.0" label="Recommended Limit" />
-                <FormRow py="py-1.0" label="Amount Exceeding Limit" />
+                <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                  <div className=" shrink-0">% of Monthly Income </div>
+                  <input
+                    disabled={true}
+                    type="text"
+                    className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-slate-200 bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                </div>
+                <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                  <div className=" shrink-0">Recommended Limit </div>
+                  <input
+                    disabled={true}
+                    type="text"
+                    className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-slate-200 bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                </div>
+                <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
+                  <div className=" shrink-0">Amount Exceeding Limit </div>
+                  <input
+                    disabled={true}
+                    type="text"
+                    className={`
+        form-control
+        block
+      
+        px-3
+        py-1
+        text-base
+        font-normal
+        text-gray-700
+        bg-slate-200 bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  `}
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -148,5 +724,5 @@ export default function ReportsPage() {
 }
 
 ReportsPage.getLayout = function getLayout(page: any) {
-  return <LeadLayout>{page}</LeadLayout>;
+  return <AdvisorLayout>{page}</AdvisorLayout>;
 };
