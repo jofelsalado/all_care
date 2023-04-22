@@ -1,15 +1,16 @@
-export function FormRow({ label, desc, py }: any) {
+export function FormRow({ label, desc, py, status }: any) {
   return (
-    <div className="flex flex-col gap-5 justify-center items-start w-[30rem]">
+    <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
       <div className=" shrink-0">{label} </div>
       <input
+        disabled={false}
         type="text"
         className={`
         form-control
         block
       
         px-3
-        ${py}
+        py-1
         text-base
         font-normal
         text-gray-700
@@ -22,7 +23,7 @@ export function FormRow({ label, desc, py }: any) {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
         id="exampleFormControlInput1"
-        placeholder={desc}
+        placeholder=""
       />
     </div>
   );

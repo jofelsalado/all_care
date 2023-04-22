@@ -11,8 +11,8 @@ export default function ReportsPage() {
       <AccountHeader header="Report" />
       <div className="flex justify-evenly items-start flex-col h-full border-solid py-10"></div>
       {/* <h2>Please complete the form below for your complaints</h2> */}
-      <div className="w-full h-[30rem] flex justify-center items-center">
-        <div className="bg-slate-200 w-[40rem] py-20  rounded-lg flex flex-col justify-center items-center ">
+      <div className="w-full h-[30rem] flex justify-center items-center px-10">
+        <div className="bg-slate-200 w-full py-20 gap-5 rounded-lg flex flex-col justify-center items-center ">
           <h1 className=" font-khulaXbold ">We are here to assist you!</h1>
           <div className="mb-10">
             Please complete the form below for your complaints

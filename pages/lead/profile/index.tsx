@@ -14,18 +14,99 @@ export default function ProfilePage() {
         <div className="flex flex-col justify-center items-center bg-white rounded-xl w-[70rem] py-20 gap-12">
           <div className="flex flex-wrap  justify-evenly items-start gap-12 ">
             <div className="flex flex-col  justify-center gap-12 items-center">
-              <InputField name="First Name" placeholder="e.g Juan" />
-              <InputField name="Middle Name" placeholder="e.g Santa" />
-              <InputField name="Contact Number" placeholder="+639*********" />
-              <InputField name="Email" placeholder="e.g juan@gmail.com" />
+              <div className="w-[20rem] grow xl:grow-0">
+                <label
+                  htmlFor="birth"
+                  className="block mb-2 text-sm font-medium text-black pl-2"
+                >
+                  First Name
+                </label>
+                <input
+                  className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
+                  type="text"
+                  placeholder="e.g Juan"
+                />
+              </div>
+              <div className="w-[20rem] grow xl:grow-0">
+                <label
+                  htmlFor="birth"
+                  className="block mb-2 text-sm font-medium text-black pl-2"
+                >
+                  Middle Name
+                </label>
+                <input
+                  className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
+                  type="text"
+                  placeholder="e.g Santa"
+                />
+              </div>
+              <div className="w-[20rem] grow xl:grow-0">
+                <label
+                  htmlFor="birth"
+                  className="block mb-2 text-sm font-medium text-black pl-2"
+                >
+                  Contact Number
+                </label>
+                <input
+                  className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
+                  type="text"
+                  placeholder="+639*********"
+                />
+              </div>
+              <div className="w-[20rem] grow xl:grow-0">
+                <label
+                  htmlFor="birth"
+                  className="block mb-2 text-sm font-medium text-black pl-2"
+                >
+                  Email
+                </label>
+                <input
+                  className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
+                  type="text"
+                  placeholder="e.g juan@gmail.com"
+                />
+              </div>
             </div>
             <div className="flex flex-col   justify-center gap-12 items-center">
-              <InputField name="Last Name" placeholder="e.g Dela Cruz" />
-              <InputField
-                name="Address"
-                placeholder="e.g Street Name, Building, House No."
-              />
-              <InputField name="Date of Birth" placeholder="MM/DD/YY" />
+              <div className="w-[20rem] grow xl:grow-0">
+                <label
+                  htmlFor="birth"
+                  className="block mb-2 text-sm font-medium text-black pl-2"
+                >
+                  Last Name
+                </label>
+                <input
+                  className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
+                  type="text"
+                  placeholder="Dela Cruz"
+                />
+              </div>
+              <div className="w-[20rem] grow xl:grow-0">
+                <label
+                  htmlFor="birth"
+                  className="block mb-2 text-sm font-medium text-black pl-2"
+                >
+                  Address
+                </label>
+                <input
+                  className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
+                  type="text"
+                  placeholder="e.g Street Name, Building, House No."
+                />
+              </div>
+              <div className="w-[20rem] grow xl:grow-0">
+                <label
+                  htmlFor="birth"
+                  className="block mb-2 text-sm font-medium text-black pl-2"
+                >
+                  BirthDate
+                </label>
+                <input
+                  className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
+                  type="date"
+                  placeholder="MM/DD/YY"
+                />
+              </div>
               <div className="w-[20rem] grow xl:grow-0">
                 <label className="block mb-2 text-sm font-medium text-gray-900  font-khulabold">
                   Upload Picture

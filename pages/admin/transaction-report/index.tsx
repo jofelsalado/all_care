@@ -71,7 +71,7 @@ export default function ReportPage() {
             >
               <option selected>All Complaints</option>
               <option value="US">All Appointments</option>
-              <option value="CA">All Reviews & Rate</option>
+              <option value="CA">All Deactivate Accounts</option>
             </select>
 
             <select

@@ -54,7 +54,7 @@ export default function BookingsPage() {
                       type="button"
                       onClick={() => setShowModal(false)}
                     >
-                      Save Changes
+                      Save Notes
                     </button>
                   </div>
                 </div>
