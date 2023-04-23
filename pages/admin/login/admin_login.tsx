@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Router from "next/router";
 import toast, { Toaster } from "react-hot-toast";
 import { id } from "date-fns/locale";
-import axios from 'axios';
+import axios from "axios";
 import React from "react";
 
 interface FormData {
@@ -16,14 +16,13 @@ interface FormData {
 }
 
 export function AdminLogin({ users }: any) {
-  
   const [form, setForm] = useState<FormData>({
     username: "",
     password: "",
   });
-  const [posts, setPosts] = useState<any>([])
+  const [posts, setPosts] = useState<any>([]);
   const [error, setError] = React.useState<any>([]);
-  const apiEndPoint = 'http://localhost:5555/api/v1/auth/login';
+  const apiEndPoint = "http://localhost:5555/api/v1/auth/login";
 
   // useEffect(()=> {
   //   const getPosts = async () => {
@@ -34,37 +33,37 @@ export function AdminLogin({ users }: any) {
   // },[]);
 
   const addPost = async () => {
-    
-    const post = { 
+    const post = {
       // email: "admin@allcarebusiness.com",
       // password: "admin2023",
       email: form.username,
       password: form.password,
+    };
+    await axios
+      .post(apiEndPoint, post)
+      .then((response) => {
+        toast.success("Welcome");
+        Router.push("./notification");
+      })
+      .catch((error) => {
+        toast.error("Invalid login!");
+      });
   };
-  await axios.post(apiEndPoint, post).then((response) => {
-    toast.success("Welcome");
-    Router.push("./notification");
-  })
-  .catch(error => {
-    toast.error("Invalid login!");
-  }); 
-  }
 
+  // const result = users.some(
+  //   (item: { id: string; username: string; password: string }) =>
+  //     item.username === String(form.username) &&
+  //     item.password === String(form.password)
+  // );
 
-  const result = users.some(
-    (item: { id: string; username: string; password: string }) =>
-      item.username === String(form.username) &&
-      item.password === String(form.password)
-  );
-
-  const handleClick = () => {
-    if (result == true) {
-      toast.success("Welcome!");
-      Router.push("./notification");
-    } else {
-      toast.error("User not found!");
-    }
-  };
+  // const handleClick = () => {
+  //   if (result == true) {
+  //     toast.success("Welcome!");
+  //     Router.push("./notification");
+  //   } else {
+  //     toast.error("User not found!");
+  //   }
+  // };
   return (
     <section className="pt-6">
       <div className="px-6 h-full text-gray-800">
@@ -80,7 +79,7 @@ export function AdminLogin({ users }: any) {
             <form className="bg-white p-10 rounded-3xl shadow-2xl">
               <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
                 <p className="text-center font-semibold mx-4 mb-0">
-                  Admin's Portal         
+                  Admin's Portal
                 </p>
               </div>
 
@@ -120,13 +119,9 @@ export function AdminLogin({ users }: any) {
                     htmlFor="exampleCheck2"
                   >
                     Remember me
-                    
                   </label>
                 </div>
-                <a
-                  href="#!"
-                  className="text-gray-800"
-                >
+                <a href="#!" className="text-gray-800">
                   Forgot password?
                 </a>
               </div>

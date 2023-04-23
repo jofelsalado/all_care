@@ -103,7 +103,7 @@ export function Card({
         </div>
       </div>
       <div className="bg-slate-200 w-[16rem]  flex flex-col justify-start gap-3 items-center py-5 rounded-xl">
-        <div className=" font-khulabold">Client Types:</div>
+        <div className=" font-khulabold">Insurance Types:</div>
         <div className="flex flex-col  h-full justify-center items-start gap-1 font-khulalight ">
           <div>{client_types1}</div>
           <div>{client_types2}</div>

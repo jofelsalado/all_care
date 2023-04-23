@@ -14,11 +14,9 @@ export default function RatingPage({ label, desc, py }: any) {
           <RateCard
             name="Mae Mabilog"
             address="Cordova, Cebu"
-            type="Financial Services"
-            price="Flat Fee"
-            client_types1="Business Owner"
-            client_types2="Divorce"
-            client_types3="Widows "
+            type="Zoom"
+            price="ONLINE"
+            client_types1="Cancer Care"
           />
         </div>
       </div>

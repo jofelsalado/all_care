@@ -131,7 +131,7 @@ export default function ProfilePage() {
                     {selectedImage ? (
                       <img src={selectedImage} alt="" />
                     ) : (
-                      <span>Select Image</span>
+                      <span>Select Picture</span>
                     )}
                   </div>
                 </label>

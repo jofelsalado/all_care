@@ -86,36 +86,28 @@ export default function ViewAdvisorsPage({ label, desc, py }: any) {
             address="Cordova, Cebu"
             type="Zoom"
             currStatus="ONLINE"
-            client_types1="Business Owner"
-            client_types2="Divorce"
-            client_types3="Widows "
+            client_types1="ICU Protect"
           />
           <Card
             name="Mae Mabilog"
             address="Cordova, Cebu"
             type="Google Meet"
             currStatus="OFFLINE"
-            client_types1="Business Owner"
-            client_types2="Divorce"
-            client_types3="Widows "
+            client_types1="First Aid"
           />
           <Card
             name="Mae Mabilog"
             address="Cordova, Cebu"
             type="Zoom"
             currStatus="OFFLINE"
-            client_types1="Business Owner"
-            client_types2="Divorce"
-            client_types3="Widows "
+            client_types1="Cancer Care"
           />
           <Card
             name="Mae Mabilog"
             address="Cordova, Cebu"
             type="Face to Face"
             currStatus="UNAVAILABLE"
-            client_types1="Business Owner"
-            client_types2="Divorce"
-            client_types3="Widows "
+            client_types1="Senior Care"
           />
         </div>
       </div>

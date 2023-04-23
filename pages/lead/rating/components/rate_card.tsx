@@ -4,6 +4,7 @@ import React from "react";
 import ReactStars from "react-stars";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import toast, { Toaster } from "react-hot-toast";
+import { GrStatusGoodSmall } from "react-icons/gr";
 
 export function RateCard({
   name,
@@ -16,6 +17,15 @@ export function RateCard({
   status,
 }: any) {
   const [showModal, setShowModal] = React.useState(false);
+  var iconColor = "";
+
+  if (price == "ONLINE") {
+    iconColor = "green";
+  } else if (price == "OFFLINE") {
+    iconColor = "red";
+  } else if (price == "DEACTIVATED") {
+    iconColor = "gray";
+  }
   return (
     <div>
       <Toaster />
@@ -90,13 +100,13 @@ export function RateCard({
 
         <div className="flex flex-row justify-around items-around w-full">
           <div className="bg-slate-200 w-[13rem] h-[10rem]  flex flex-col justify-start gap-3 items-center py-5 rounded-xl">
-            <div className=" font-khulabold">Types:</div>
+            <div className=" font-khulabold">Type:</div>
             <div className="flex flex-col  h-full justify-center items-start gap-1 font-khulalight ">
               {type}
             </div>
           </div>
           <div className="bg-slate-200 w-[13rem]  flex flex-col justify-start gap-3 items-center py-5 rounded-xl">
-            <div className=" font-khulabold">Client Types:</div>
+            <div className=" font-khulabold">Insurance Type:</div>
             <div className="flex flex-col  h-full justify-center items-start gap-1 font-khulalight ">
               <div>{client_types1}</div>
               <div>{client_types2}</div>
@@ -104,10 +114,10 @@ export function RateCard({
             </div>
           </div>
           <div className="bg-slate-200 w-[13rem] h-[10rem]  flex flex-col justify-start gap-3 items-center py-5 rounded-xl">
-            <div className=" font-khulabold">Price:</div>
+            <div className=" font-khulabold">Status:</div>
             <div className="text-sm text-center flex flex-row justify-center gap-1 items-center w-full  h-full font-khulalight">
               <div>
-                <AiOutlineCreditCard size={30} />
+                <GrStatusGoodSmall size={20} color={iconColor} />
               </div>
               <div>{price}</div>
             </div>
