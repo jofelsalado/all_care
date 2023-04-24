@@ -34,8 +34,7 @@ import axios from "axios";
 // }
 
 export function AccountTable() {
-  const [posts, setPosts] = useState<any>([]);
-  const apiEndPoint = "http://localhost:5555/api/v1/accounts";
+ 
   // const [filter, setFilter] = useState("");
   // const [showFilter, setShowFilter] = useState(false);
   // var lowFilter = String(filter).toLowerCase();
@@ -127,11 +126,13 @@ export function AccountTable() {
   // }
 
   
-
+  const [posts, setPosts] = useState<any>([]);
+  const apiEndPoint = "http://localhost:5555/api/v1/accounts";
   useEffect(() => {
     const getPosts = async () => {
-      const { data: res } = await axios.get(apiEndPoint);
-      setPosts(res);
+      const  response  = await axios.get(apiEndPoint);
+      // setPosts(response);
+      console.log(response)
     };
     getPosts();
   }, []);
@@ -232,12 +233,12 @@ export function AccountTable() {
           </thead>
           
             <tbody className="divide-y-8 shadow-2xl leading-cust before:content-[''] before:text-[#f2f8ff]  ">
-            {posts.map((post: any) => (
+            {/* {posts.map((post: any) => (
                   <tr
                     key={post.id}
                     className={`bg-white hover:bg-gradient-to-r from-[#588cfc] to-pink-400  hover:text-white scale-100 laptop:scale-100 laptop:hover:scale-105 duration-300`}
                   >
-                    {/* <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
                       {post.id}
                     </td>
                     <td className="p-3 text-sm whitespace-nowrap">
@@ -272,7 +273,7 @@ export function AccountTable() {
                     </td>
                     <td className="p-3 text-sm whitespace-nowrap">
                       {post.gender}
-                    </td> */}
+                    </td>
                  
                   
 
@@ -319,7 +320,7 @@ export function AccountTable() {
                       </div>
                     </td>
                   </tr>
-               ))}
+               ))} */}
             </tbody>
           
         </table>
