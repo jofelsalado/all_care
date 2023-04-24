@@ -11,134 +11,28 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { RiDeleteBinLine } from "react-icons/ri";
 import Link from "next/link";
 import Router from "next/router";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
-// interface FormData {
-//   id: string;
-//   user_role: string;
-//   email: string;
-//   username: string;
-//   password: string;
-//   firstname: string;
-//   middlename: string;
-//   lastname: string;
-//   contactnum: string;
-//   address: string;
-//   birthdate: string;
-//   gender: string;
-//   image: string;
-//   date: string;
-//   status: string;
-// }
-
 export function AccountTable() {
- 
-  // const [filter, setFilter] = useState("");
-  // const [showFilter, setShowFilter] = useState(false);
-  // var lowFilter = String(filter).toLowerCase();
-  // const refreshData = () => {
-  //   Router.replace(Router.asPath);
-  // };
-  // const router = useRouter();
-  // var id = "";
-  // var user_role = "";
-  // var email = "";
-  // var username = "";
-  // var password = "";
-  // var firstname = "";
-  // var middlename = "";
-  // var lastname = "";
-  // var contactnum = "";
-  // var address = "";
-  // var birthdate = "";
-  // var gender = "";
-  // var image = "";
-  // var date = "";
-  // var status = "";
-  // const [form, setForm] = useState<FormData>({
-  //   id: String(id),
-  //   user_role: String(user_role),
-  //   email: String(email),
-  //   username: String(username),
-  //   password: String(password),
-  //   firstname: String(firstname),
-  //   middlename: String(middlename),
-  //   lastname: String(lastname),
-  //   contactnum: String(contactnum),
-  //   address: String(address),
-  //   birthdate: String(birthdate),
-  //   gender: String(gender),
-  //   image: String(image),
-  //   date: String(date),
-  //   status: String(status),
-  // });
-  // async function deleteUser(id: string) {
-  //   try {
-  //     fetch(`http://localhost:3000/api/user/${id}`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       method: "DELETE",
-  //     }).then(() => {
-  //       refreshData();
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-  // const handleSubmit = async (id: string, data: FormData) => {
-  //   try {
-  //     updateUser(id, data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // async function updateUser(id: string, data: FormData) {
-  //   try {
-  //     fetch(`http://localhost:3000/api/user/${id}`, {
-  //       body: JSON.stringify(data),
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       method: "PATCH",
-  //     }).then(() => {
-  //       form.id = "";
-  //       refreshData();
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   // Update the document title using the browser API
-
-  //   if (filter == "") {
-  //     setShowFilter(false);
-  //   }
-  // });
-
-  // function updateInput(event: any) {
-  //   setFilter(event.target.value);
-  // }
-
-  
   const [posts, setPosts] = useState<any>([]);
   const apiEndPoint = "http://localhost:5555/api/v1/accounts";
   useEffect(() => {
     const getPosts = async () => {
-      const  response  = await axios.get(apiEndPoint);
-      // setPosts(response);
-      console.log(response)
+      const response = await axios.get(apiEndPoint);
+      setPosts(response.data.data);
+      console.log(response.data.data);
     };
     getPosts();
   }, []);
 
+  const handleDelete = async (post: any) => {
+    await axios.delete(apiEndPoint + "/" + post.id);
+    setPosts(posts.filter((p: any) => p.id !== post.id));
+    // setShowModal(false);
+  };
 
- 
   return (
     <div>
       <div className="flex justify-between w-full">
@@ -223,106 +117,93 @@ export function AccountTable() {
               <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
                 GENDER
               </th>
-              <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
-                DATE
-              </th>
+
               <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
                 ACTIONS
               </th>
             </tr>
           </thead>
-          
-            <tbody className="divide-y-8 shadow-2xl leading-cust before:content-[''] before:text-[#f2f8ff]  ">
-            {/* {posts.map((post: any) => (
-                  <tr
-                    key={post.id}
-                    className={`bg-white hover:bg-gradient-to-r from-[#588cfc] to-pink-400  hover:text-white scale-100 laptop:scale-100 laptop:hover:scale-105 duration-300`}
-                  >
-                    <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
-                      {post.id}
-                    </td>
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      {post.userTypeId}
-                    </td>
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      {post.email}
-                    </td>
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      {post.username}
-                    </td>
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      {post.password}
-                    </td>
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      {post.firstName}
-                    </td>
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      {post.middleName}
-                    </td>
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      {post.lastName}
-                    </td>
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      {post.contactNo}
-                    </td>
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      {post.address}
-                    </td>
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      {post.birthdate}
-                    </td>
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      {post.gender}
-                    </td>
-                 
-                  
 
-                    <td className="p-3 text-sm whitespace-nowrap">
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => {
-                            // router.push(
-                            //   {
-                            //     pathname: "./account/update",
-                            //     query: {
-                            //       id: post.id,
-                            //       user_role: post.user_role,
-                            //       email: post.email,
-                            //       username: post.username,
-                            //       password: post.password,
-                            //       firstname: post.firstname,
-                            //       middlename: post.middlename,
-                            //       lastname: post.lastname,
-                            //       contactnum: post.contactnum,
-                            //       address: post.address,
-                            //       birthdate: post.birthdate,
-                               
-                            //     },
-                            //   },
-                            //   "./update"
-                            // );
-                          }}
-                        >
-                          <div className="cursor-pointer hover:text-blue-500 scale-100 hover:scale-125 duration-300">
-                            <AiOutlineEdit size="1.2rem" />
-                          </div>
-                        </button>
+          <tbody className="divide-y-8 shadow-2xl leading-cust before:content-[''] before:text-[#f2f8ff]  ">
+            {posts.map((post: any) => (
+              <tr
+                key={post.id}
+                className={`bg-white hover:bg-gradient-to-r from-[#588cfc] to-pink-400  hover:text-white scale-100 laptop:scale-100 laptop:hover:scale-105 duration-300`}
+              >
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                  {post.id}
+                </td>
+                <td className="p-3 text-sm whitespace-nowrap">
+                  {post.userTypeId}
+                </td>
+                <td className="p-3 text-sm whitespace-nowrap">{post.email}</td>
+                <td className="p-3 text-sm whitespace-nowrap">
+                  {post.username}
+                </td>
+                <td className="p-3 text-sm whitespace-nowrap">
+                  {post.password}
+                </td>
+                <td className="p-3 text-sm whitespace-nowrap">
+                  {post.firstName}
+                </td>
+                <td className="p-3 text-sm whitespace-nowrap">
+                  {post.middleName}
+                </td>
+                <td className="p-3 text-sm whitespace-nowrap">
+                  {post.lastName}
+                </td>
+                <td className="p-3 text-sm whitespace-nowrap">
+                  {post.contactNo}
+                </td>
+                <td className="p-3 text-sm whitespace-nowrap">
+                  {post.address}
+                </td>
+                <td className="p-3 text-sm whitespace-nowrap">
+                  {post.birthdate}
+                </td>
+                <td className="p-3 text-sm whitespace-nowrap">{post.gender}</td>
 
-                        <button
-                          onClick={() => {
-                            // deleteUser(item.id);
-                          }}
-                        >
-                          <div className="cursor-pointer hover:text-red-500 scale-100 hover:scale-125 duration-300">
-                            <RiDeleteBinLine size="1.2rem" />
-                          </div>
-                        </button>
+                <td className="p-3 text-sm whitespace-nowrap">
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        router.push(
+                          {
+                            pathname: "./account/update",
+                            query: {
+                              id: post.id,
+                              firstName: post.firstName,
+                              middleName: post.middleName,
+                              lastName: post.lastName,
+                              gender: post.gender,
+                              contactNo: post.contactNo,
+                              address: post.address,
+                              birthdate: post.birthdate,
+                              email: post.email,
+                              username: post.username,
+                              password: post.password,
+                              userTypeId: post.userTypeId,
+                            },
+                          },
+                          "./update"
+                        );
+                      }}
+                    >
+                      <div className="cursor-pointer hover:text-blue-500 scale-100 hover:scale-125 duration-300">
+                        <AiOutlineEdit size="1.2rem" />
                       </div>
-                    </td>
-                  </tr>
-               ))} */}
-            </tbody>
-          
+                    </button>
+
+                    <button onClick={() => handleDelete(post)}>
+                      <div className="cursor-pointer hover:text-red-500 scale-100 hover:scale-125 duration-300">
+                        <RiDeleteBinLine size="1.2rem" />
+                      </div>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
         <Toaster />
       </div>
