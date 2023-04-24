@@ -3,85 +3,124 @@ import { useState } from "react";
 import { InputForm } from "../../../../home/components/input_form";
 import Router from "next/router";
 import { resolve } from "path";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 interface FormData {
   id: string;
-  user_role: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  gender: string;
+  contactNo: string;
+  address: string;
+  birthdate: string;
   email: string;
   username: string;
   password: string;
-  firstname: string;
-  middlename: string;
-  lastname: string;
-  contactnum: string;
-  address: string;
-  birthdate: string;
-  gender: string;
-  image: string;
-  date: string;
-  status: string;
+  userTypeId: string;
 }
+// "firstName": "firstName",
+//     "middleName": "middleName",
+//     "lastName": "lastName",
+//     "gender": "Male",
+//     "contactNo": "81234567",
+//     "address": "address",
+//     "birthdate": "01-18-1998",
+//     "email": "user12@domain.com",
+//     "username": "username12",
+//     "password": "password",
+//     "userTypeId": 2
 const currentDate = new Date().toLocaleDateString();
 export function AddAccount() {
   const [form, setForm] = useState<FormData>({
     id: "",
-    user_role: "",
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    gender: "",
+    contactNo: "",
+    address: "",
+    birthdate: "",
     email: "",
     username: "",
     password: "",
-    firstname: "",
-    middlename: "",
-    lastname: "",
-    contactnum: "",
-    address: "",
-    birthdate: "",
-    gender: "",
-    image: "",
-    date: currentDate,
-    status: "",
+    userTypeId: "",
   });
 
-  async function create(data: FormData) {
-    try {
-      fetch("http://localhost:3000/api/create", {
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      }).then(() => {
-        setForm({
-          id: "1",
-          user_role: "",
-          email: "",
-          username: "",
-          password: "",
-          firstname: "",
-          middlename: "",
-          lastname: "",
-          contactnum: "",
-          address: "",
-          birthdate: "",
-          gender: "",
-          image: "",
-          date: currentDate,
-          status: "Active",
-        });
-        Router.push("./");
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
-  const handleSubmit = async (data: FormData) => {
-    try {
-      console.log(data);
-      create(data);
-    } catch (error) {
-      console.log(error);
-    }
+  const apiEndPoint = "http://localhost:5555/api/v1/accounts";
+
+  const addPost = async () => {
+    const post = {
+    
+    firstName: form.firstName,
+    middleName: form.middleName,
+    lastName: form.lastName,
+    gender: form.gender,
+    contactNo: form.contactNo,
+    address: form.address,
+    birthdate: form.birthdate,
+    email: form.email,
+    username: form.username,
+    password: form.password,
+    userTypeId: 1,
+    };
+    await axios
+      .post(apiEndPoint, post)
+      .then((response) => {
+        toast.success("Added Successfully");
+        Router.push("./");
+      })
+      .catch((error) => {
+        toast.error("Add Failed");
+      });
   };
+
+
+
+
+  // async function create(data: FormData) {
+  //   try {
+  //     fetch("http://localhost:3000/api/create", {
+  //       body: JSON.stringify(data),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       method: "POST",
+  //     }).then(() => {
+  //       setForm({
+  //         id: "1",
+  //         user_role: "",
+  //         email: "",
+  //         username: "",
+  //         password: "",
+  //         firstname: "",
+  //         middlename: "",
+  //         lastname: "",
+  //         contactnum: "",
+  //         address: "",
+  //         birthdate: "",
+  //         gender: "",
+  //         image: "",
+  //         date: currentDate,
+  //         status: "Active",
+  //       });
+  //       Router.push("./");
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+  // const handleSubmit = async (data: FormData) => {
+  //   try {
+  //     console.log(data);
+  //     create(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className="flex justify-center items-center w-full">
@@ -92,10 +131,10 @@ export function AddAccount() {
           </h1>
         </div>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit(form);
-          }}
+          // onSubmit={(e) => {
+          //   e.preventDefault();
+          //   handleSubmit(form);
+          // }}
         >
           <div className="flex flex-wrap w-full  gap-y-5 gap-x-5 justify-around items-around ">
             <div className="flex flex-col gap-y-5">
@@ -165,9 +204,9 @@ export function AddAccount() {
                   className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
                   type="text"
                   placeholder="e.g Juan"
-                  value={form.firstname}
+                  value={form.firstName}
                   onChange={(e) =>
-                    setForm({ ...form, firstname: e.target.value })
+                    setForm({ ...form, firstName: e.target.value })
                   }
                 />
               </div>
@@ -180,9 +219,9 @@ export function AddAccount() {
                   className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
                   type="text"
                   placeholder="e.g Dela Cruz"
-                  value={form.middlename}
+                  value={form.middleName}
                   onChange={(e) =>
-                    setForm({ ...form, middlename: e.target.value })
+                    setForm({ ...form, middleName: e.target.value })
                   }
                 />
               </div>
@@ -197,9 +236,9 @@ export function AddAccount() {
                   className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
                   type="text"
                   placeholder="e.g Santa"
-                  value={form.lastname}
+                  value={form.lastName}
                   onChange={(e) =>
-                    setForm({ ...form, lastname: e.target.value })
+                    setForm({ ...form, lastName: e.target.value })
                   }
                 />
               </div>
@@ -211,9 +250,9 @@ export function AddAccount() {
                   className={` bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 `}
                   type="text"
                   placeholder="+639*********"
-                  value={form.contactnum}
+                  value={form.contactNo}
                   onChange={(e) =>
-                    setForm({ ...form, contactnum: e.target.value })
+                    setForm({ ...form, contactNo: e.target.value })
                   }
                 />
               </div>
