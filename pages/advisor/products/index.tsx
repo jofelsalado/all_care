@@ -1,4 +1,7 @@
+import axios from "axios";
 import Link from "next/link";
+import React from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -7,6 +10,16 @@ import { AccountHeader } from "../components/account_header";
 import { AdvisorLayout } from "../layout/advisor_layout";
 
 export default function NotifactionPage() {
+  const [posts, setPosts] = useState<any>([]);
+  const [error, setError] = React.useState<any>([]);
+  const apiEndPoint = "http://localhost:5555/api/v1/products";
+   useEffect(()=> {
+    const getPosts = async () => {
+      const {data: res} = await axios.get(apiEndPoint);
+      setPosts(res);
+    };
+    getPosts();
+  },[]);
   return (
     <div className="pl-10 pr-28">
       <AccountHeader header="Insurance Products" name="James Villarojo" />
@@ -27,23 +40,36 @@ export default function NotifactionPage() {
                 PRODUCT NAME
               </th>
               <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
-                COMPANY
+                INSURANCE PRODUCT LINK
               </th>
               <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
-                TYPE OF MEETING
+                TYPE OF INSURANCE
               </th>
               <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
-                STATUS
+                DESCRIPTION
               </th>
-              <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
+              {/* <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
                 ADVISOR
               </th>
               <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
                 ACTION
-              </th>
+              </th> */}
             </tr>
           </thead>
-          <tr
+          <tbody>
+            {posts.map((post: any) => 
+              <tr key={post.id}>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">{post.id}</td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">{post.name}</td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">{post.url}</td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">{post.type}</td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">{post.description}</td>
+                {/* <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">{post.id}</td>
+                <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">{post.id}</td> */}
+              </tr>
+              )}
+          </tbody>
+          {/* <tr
             // key={item.id}
             className={`bg-white hover:bg-gradient-to-r from-[#588cfc] to-pink-400  hover:text-white scale-100 laptop:scale-100 laptop:hover:scale-105 duration-300`}
           >
@@ -82,7 +108,7 @@ export default function NotifactionPage() {
                 </button>
               </div>
             </td>
-          </tr>
+          </tr> */}
         </table>
       </div>
     </div>
