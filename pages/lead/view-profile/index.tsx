@@ -11,7 +11,9 @@ import {
   AiFillInstagram,
   AiFillLinkedin,
 } from "react-icons/ai";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 declare module "react" {
   interface HTMLProps<T> {
     size?: string;
@@ -21,7 +23,10 @@ export default function ViewProfile() {
   const router = useRouter();
   const {
     id,
+    adviserId,
     advisorName,
+    leadsId,
+    leadsName,
     company,
     expertise,
     typeMeeting,
@@ -47,8 +52,11 @@ export default function ViewProfile() {
   const [showModal, setShowModal] = React.useState(false);
 
   const [form, setForm] = React.useState({
-    id: id,
+    id: Number(id),
+    adviserId: Number(adviserId),
     name: advisorName,
+    leadsId: leadsId,
+    leadsName: leadsName,
     company: company,
     expertise: expertise,
     type_meeting: typeMeeting,
@@ -66,101 +74,66 @@ export default function ViewProfile() {
     booking: startDate,
   });
 
-  // useEffect(() => {
-  //   const items = JSON.parse(localStorage.getItem("prodId") || "{}");
-  //   if (items) {
-  //     setProdId(items);
-  //   }
-  //   console.log(prodId);
-  //   setForm({
-  //     ...form,
-  //     id: prodId?.id,
-  //     name:
-  //       prodId.adviserData?.user.firstName +
-  //       " " +
-  //       prodId.adviserData?.user.lastName,
-  //   });
-  // setForm({
-  //   ...form,
-  //   name:
-  //     prodId?.adviserData?.user?.firstName +
-  //     " " +
-  //     prodId?.adviserData?.user?.lastName,
-  // });
-  // setForm({
-  //   ...form,
-  //   company: prodId?.adviser?.company,
-  // });
+  const apiEndPoint = "http://localhost:5555/api/v1/adviser-consultations";
 
-  // setForm({
-  //   ...form,
-  //   expertise: prodId?.adviser?.expertise,
-  // });
-  // setForm({
-  //   ...form,
-  //   type_meeting: prodId?.meetingType,
-  // });
-  // setForm({
-  //   ...form,
-  //   age: prodId?.adviserData?.user?.birthdate,
-  // });
-  // setForm({
-  //   ...form,
-  //   contact: prodId?.adviserData?.user?.contactNo,
-  // });
-  // setForm({
-  //   ...form,
-  //   email: prodId?.adviserData?.user?.email,
-  // });
-  // setForm({
-  //   ...form,
-  //   address: prodId?.adviserData?.user?.address,
-  // });
-  // setForm({
-  //   ...form,
-  //   type_insurance: prodId?.type,
-  // });
-  // setForm({
-  //   ...form,
-  //   name: prodId?.name,
-  // });
-  // setForm({
-  //   ...form,
-  //   insurance_product: prodId?.name,
-  // });
-  // setForm({
-  //   ...form,
-  //   insurance_product_link: prodId?.url,
-  // });
-  // setForm({
-  //   ...form,
-  //   insurance_description: prodId?.description,
-  // });
-  // }, []);
+  const addPost = async () => {
+    const post = {
+      company: form.company,
+      meetingType: form.type_meeting,
+      type: form.type_insurance,
+      fee: "N/A",
+      remarks: "N/A",
+      consultationDate: form.booking,
+      adviserId: Number(adviserId),
+      productId: Number(form.id),
+      leadId: Number(items.lead?.id),
+    };
+    await axios
+      .post(apiEndPoint, post)
+      .then((response) => {
+        toast.success("Added Successfully");
+        handlePost();
+        // Router.push("./products");
+      })
+      .catch((error) => {
+        toast.error("Add Failed");
+        handlePost();
+      });
+  };
 
-  // ENTER HERE
+  const [items, setItems] = useState<any>([]);
 
-  // console.log(prodId);
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("lead") || "{}");
+    if (items) {
+      setItems(items);
+    }
+  }, []);
+
   const handlePost = () => {
     // setShowModal(false);
-    // console.log(adviserId);
-    // console.log(advisorName);
-    // console.log(leadsId);
-    // console.log(leadsName);
-    // console.log(company);
-    // console.log(expertise);
-    // console.log(typeMeeting);
-    // console.log(age);
-    // console.log(contact);
-    // console.log(address);
-    // console.log(typeInsurance);
-    // console.log(insuranceProducts);
-    // console.log(insuranceProductLink);
-    // console.log(insuranceDescription);
+    console.log(items.lead?.id);
+    console.log("LEADS ID: " + items.id);
+    console.log("Product ID: " + form.id);
+    console.log("Advisor ID: " + adviserId);
+    console.log("Advisor Name: " + advisorName);
+    console.log("Lead ID: " + leadsId);
+    console.log("Lead Name: " + leadsName);
+    console.log("Company: " + company);
+    console.log("Expertise: " + expertise);
+    console.log("Type of Meeting: " + typeMeeting);
+    console.log("Age: " + age);
+    console.log("Contact: " + contact);
+    console.log("Address: " + address);
+    console.log("Type of Insurance: " + typeInsurance);
+    console.log("Insurance Product: " + insuranceProducts);
+    console.log("Insurance Product Link: " + insuranceProductLink);
+    console.log("Insurance Description: " + insuranceDescription);
     // console.log(remarks);
   };
   return (
     <div className="flex">
+      <Toaster />
       <div className=" h-auto w-[20rem] flex flex-col items-center px-12 py-10 bg-slate-200">
         <div className="flex flex-col bg-red-500 rounded-full w-[10rem] h-[10rem] mb-10 overflow-hidden">
           <Image
@@ -347,7 +320,10 @@ export default function ViewProfile() {
                           <button
                             className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                             type="button"
-                            onClick={handlePost}
+                            onClick={
+                              addPost
+                              // console.log(items.firstName + "" + items.lastName)
+                            }
                           >
                             Save Changes
                           </button>

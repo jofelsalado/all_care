@@ -33,9 +33,7 @@ export function Card({
   // );
   // console.log(prodId.adviserData.user?.birthdate);
   const handlePost = () => {
-    console.log(
-      prodId.adviserData.user.firstName + " " + prodId.adviserData.user.lastName
-    );
+    console.log(prodId);
   };
   return (
     <div
@@ -128,12 +126,19 @@ export function Card({
       <button
         // href={"./view-profile"}
         onClick={() => {
+          console.log(prodId);
           router.push(
             {
               pathname: "./view-profile",
               query: {
                 id: prodId?.id,
+                adviserId: prodId.adviser?.id,
                 advisorName:
+                  prodId.adviserData?.user.firstName +
+                  " " +
+                  prodId.adviserData?.user.lastName,
+                leadsId: prodId.adviser?.id,
+                leadsName:
                   prodId.adviserData?.user.firstName +
                   " " +
                   prodId.adviserData?.user.lastName,

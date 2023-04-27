@@ -23,13 +23,12 @@ export function AdvisorLogin({ users }: any) {
     email: "",
     password: "",
   });
-  const [posts, setPosts] = useState<any>([]);
-  const [error, setError] = React.useState<any>([]);
+
   const apiEndPoint = "http://localhost:5555/api/v1/auth/login";
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(items));
+    localStorage.setItem("advisor", JSON.stringify(items));
   }, [items]);
 
   const addPost = async () => {
@@ -40,27 +39,16 @@ export function AdvisorLogin({ users }: any) {
     await axios
       .post(apiEndPoint, post)
       .then((response) => {
-        console.log(response.data.user.adviser);
+        console.log(response.data.user.adviser.id);
         toast.success("Welcome");
         setItems(response.data.user.adviser);
         Router.push("./notification");
-        // EmailClass.setEmail(form.email);
-        // router.push(
-        //   {
-        //     pathname: "./notification",
-        //     query: {
-        //       email: form.email,
-        //     },
-        //   },
-        //   "./add-products"
-        // );
       })
       .catch((error) => {
         toast.error("Invalid login!");
       });
   };
 
-  // console.log(form.email);
   return (
     <section className="pt-6">
       <div className="px-6 h-full text-gray-800">

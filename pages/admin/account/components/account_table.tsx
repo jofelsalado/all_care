@@ -6,7 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlineMinusCircle } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { RiDeleteBinLine } from "react-icons/ri";
 import Link from "next/link";
@@ -249,7 +249,7 @@ export function AccountTable() {
 
                     <button onClick={() => setShowModal(true)}>
                       <div className="cursor-pointer hover:text-red-500 scale-100 hover:scale-125 duration-300">
-                        <RiDeleteBinLine size="1.2rem" />
+                        <AiOutlineMinusCircle size="1.2rem" />
                       </div>
                     </button>
                   </div>

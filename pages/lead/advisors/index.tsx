@@ -32,7 +32,7 @@ export default function ViewAdvisorsPage({ label, desc, py }: any) {
       const response = await axios.get(apiEndPoint);
 
       setPosts(response.data);
-      // console.log(response.data);
+      console.log(response.data);
       // console.log(posts);
     };
     getPosts();
@@ -88,8 +88,27 @@ export default function ViewAdvisorsPage({ label, desc, py }: any) {
             className="bg-gray-50 border w-[15rem] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
           >
             <option selected>Type of Insurance</option>
-            <option value="US">PhilHealth</option>
-            <option value="CA">Medicare</option>
+            <option value="Sun Fit and Well">Sun Fit and Well</option>
+            <option value="Sun Senior Care">Sun Senior Care</option>
+            <option value="Sun Cancer Care">Sun Cancer Care</option>
+            <option value="Sun Life Assure">Sun Life Assure</option>
+            <option value="Sun Healthier Life">Sun Healthier Life</option>
+            <option value="Sun First Aid">Sun First Aid</option>
+            <option value="Sun Maiden and Maiden Plus">
+              Sun Maiden and Maiden Plus
+            </option>
+            <option value="Sun ICU Protect">Sun ICU Protect</option>
+            <option value="Health Care Access">Health Care Access</option>
+            <option value="Global Health Access">Global Health Access</option>
+            <option value="Health Start Lite">Health Start Lite</option>
+            <option value="Health Start">Health Start</option>
+            <option value="Health Max">Health Max</option>
+            <option value="Maternity Care">Maternity Care</option>
+            <option value="MedConsult Adults">MedConsult Adults</option>
+            <option value="MedConsult Kids">MedConsult Kids</option>
+            <option value="MedConsult Seniors">MedConsult Seniors</option>
+            <option value="MedConsult Lite">MedConsult Lite</option>
+            <option value="Total ProtectER">Total ProtectER</option>
           </select>
 
           <select
@@ -116,7 +135,7 @@ export default function ViewAdvisorsPage({ label, desc, py }: any) {
           {posts.map((post: any) => (
             <Card
               key={post.id}
-              name={post.adviserData.user.firstName}
+              name={post.adviserData?.user.firstName}
               meeting_type={post.meetingType}
               insurance_product={post.name}
               currStatus={post.status}

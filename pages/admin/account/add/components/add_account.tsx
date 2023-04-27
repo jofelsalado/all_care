@@ -283,7 +283,7 @@ export function AddAccount() {
               >
                 <option selected>Select Sex</option>
                 <option value="Male">Male</option>
-                <option value="Female">Female</option>
+                <option value="Famale">Female</option>
               </select>
             </div>
           </div>
