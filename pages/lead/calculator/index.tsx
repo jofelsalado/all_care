@@ -5,11 +5,7 @@ import { AccountHeader } from "../components/account_header";
 import { useEffect, useState } from "react";
 
 interface FormData {
-  date: string;
-  name: string;
-  email: string;
   income: string;
-  contact: string;
   current: string;
   peak: string;
   operating_cost1: string;
@@ -30,13 +26,9 @@ interface FormData {
 
 export default function ReportsPage() {
   const [form, setForm] = useState<FormData>({
-    date: "",
-    name: "",
-    email: "",
     income: "",
-    contact: "",
-    current: "",
-    peak: "",
+    current: "0",
+    peak: "0",
     operating_cost1: "0",
     operating_cost2: "0",
     operating_cost3: "0",
@@ -90,6 +82,16 @@ export default function ReportsPage() {
   let financing_monthly = total_financing_cost / parseFloat(form.income);
   let financing_limit = 0.2 * parseFloat(form.income);
   let financing_amount = 0;
+
+  let [ageCurr, setAgeCurr] = useState(0);
+  let [agePeak, setAgePeak] = useState(0);
+  var ageLeft = agePeak - ageCurr + 0;
+  var message = "You have " + ageLeft + " years remaining to invest!";
+
+  if (isNaN(ageLeft)) {
+    ageLeft = 0;
+    message = "You have " + 0 + " years remaining to invest!";
+  }
 
   if (total_financing_cost > financing_limit) {
     financing_amount = total_financing_cost - financing_limit;
@@ -150,7 +152,10 @@ export default function ReportsPage() {
     isNaN(investing_monthly) ||
     isNaN(investing_minimum) ||
     isNaN(financing_limit) ||
-    isNaN(financing_monthly)
+    isNaN(financing_monthly) ||
+    isNaN(ageLeft) ||
+    isNaN(ageCurr) ||
+    isNaN(agePeak)
   ) {
     operating_monthly = 0;
     operating_limit = 0;
@@ -159,6 +164,9 @@ export default function ReportsPage() {
     investing_minimum = 0;
     financing_monthly = 0;
     financing_limit = 0;
+    ageLeft = 0;
+    ageCurr = 0;
+    agePeak = 0;
   }
 
   useEffect(() => {
@@ -173,90 +181,6 @@ export default function ReportsPage() {
         <div className="bg-slate-200 w-full shadow-2xl py-10 rounded-3xl flex flex-row justify-around items-center ">
           <div className="flex flex-wrap h-full justify-around items-start gap-10 w-full">
             <div className="flex flex-col gap-10 w-[12.9rem]">
-              <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
-                <div className=" shrink-0">Date </div>
-                <input
-                  value={form.date}
-                  onChange={(e) => setForm({ ...form, date: e.target.value })}
-                  disabled={false}
-                  type="text"
-                  className={`
-        form-control
-        block
-      
-        px-3
-        py-1
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-  `}
-                  id="exampleFormControlInput1"
-                  placeholder="Date"
-                />
-              </div>
-              <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
-                <div className=" shrink-0">Name </div>
-                <input
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  disabled={false}
-                  type="text"
-                  className={`
-        form-control
-        block
-      
-        px-3
-        py-1
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-  `}
-                  id="exampleFormControlInput1"
-                  placeholder=""
-                />
-              </div>
-              <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
-                <div className=" shrink-0">Email </div>
-                <input
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  disabled={false}
-                  type="text"
-                  className={`
-        form-control
-        block
-      
-        px-3
-        py-1
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-  `}
-                  id="exampleFormControlInput1"
-                  placeholder=""
-                />
-              </div>
               <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
                 <div className=" shrink-0">Monthly Net Income </div>
                 <input
@@ -287,44 +211,18 @@ export default function ReportsPage() {
             </div>
             <div className="flex flex-col gap-10 w-[12.9rem]">
               <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
-                <div className=" shrink-0">Contact Number </div>
-                <input
-                  value={form.contact}
-                  onChange={(e) =>
-                    setForm({ ...form, contact: e.target.value })
-                  }
-                  disabled={false}
-                  type="text"
-                  className={`
-        form-control
-        block
-      
-        px-3
-        py-1
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-  `}
-                  id="exampleFormControlInput1"
-                  placeholder=""
-                />
+                <div className=" shrink-0">Status: </div>
+                <div className=" font-khulabold text-lg">{message}</div>
               </div>
+            </div>
+            <div className="flex flex-col gap-10 w-[12.9rem]">
               <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
                 <div className=" shrink-0">Current Age </div>
                 <input
-                  value={form.current}
-                  onChange={(e) =>
-                    setForm({ ...form, current: e.target.value })
-                  }
+                  // value={form.current}
+                  onChange={(e) => setAgeCurr(parseInt(e.target.value))}
                   disabled={false}
-                  type="text"
+                  type="number"
                   className={`
         form-control
         block
@@ -349,10 +247,10 @@ export default function ReportsPage() {
               <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
                 <div className=" shrink-0">Peak Age</div>
                 <input
-                  value={form.peak}
-                  onChange={(e) => setForm({ ...form, peak: e.target.value })}
+                  // value={form.peak}
+                  onChange={(e) => setAgePeak(parseInt(e.target.value))}
                   disabled={false}
-                  type="text"
+                  type="number"
                   className={`
         form-control
         block
@@ -406,11 +304,11 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #1"
+                      placeholder="e.g groceries, gas, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
-                    <div className=" shrink-0">Cost </div>
+                    <div className=" shrink-0">Amount </div>
                     <input
                       onChange={(e) => {
                         setForm({ ...form, operating_cost1: e.target.value });
@@ -435,7 +333,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #1"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -463,7 +361,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #2"
+                      placeholder="e.g groceries, gas, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
@@ -492,7 +390,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #2"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -520,7 +418,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #3"
+                      placeholder="e.g groceries, gas, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
@@ -549,7 +447,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #3"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -577,7 +475,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #4"
+                      placeholder="e.g groceries, gas, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
@@ -606,7 +504,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #4"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -634,7 +532,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #5"
+                      placeholder="e.g groceries, gas, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
@@ -663,7 +561,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #5"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -691,7 +589,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #6"
+                      placeholder="e.g groceries, gas, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
@@ -720,7 +618,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #6"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -748,7 +646,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #7"
+                      placeholder="e.g groceries, gas, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
@@ -777,7 +675,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #7"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -805,7 +703,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #8"
+                      placeholder="e.g groceries, gas, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
@@ -834,7 +732,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #8"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -995,11 +893,11 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #1"
+                      placeholder="e.g Health insurance, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
-                    <div className=" shrink-0">Cost</div>
+                    <div className=" shrink-0">Amount</div>
                     <input
                       onChange={(e) =>
                         setForm({ ...form, investing_cost1: e.target.value })
@@ -1024,7 +922,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #1"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -1052,7 +950,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #2"
+                      placeholder="e.g Health insurance, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
@@ -1081,7 +979,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #2"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -1109,7 +1007,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #3"
+                      placeholder="e.g Health insurance, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
@@ -1138,7 +1036,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #3"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -1149,12 +1047,6 @@ export default function ReportsPage() {
               <div className="flex flex-row justify-between items-center w-full">
                 <div className="">
                   Total: PHP {total_investing_cost.toLocaleString()}
-                </div>
-                <div className="flex gap-2 justify-center items-center text-center">
-                  <div className="">Status: </div>
-                  <div className={` font-khulaXbold ${statusColorInvesting}`}>
-                    {statusInvesting}
-                  </div>
                 </div>
               </div>
               <div className="flex flex-col mt-10 gap-10">
@@ -1272,11 +1164,11 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #1"
+                      placeholder="e.g jewelry, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
-                    <div className=" shrink-0">Cost </div>
+                    <div className=" shrink-0">Amount </div>
                     <input
                       onChange={(e) =>
                         setForm({ ...form, financing_cost1: e.target.value })
@@ -1301,7 +1193,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #1"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -1329,7 +1221,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #2"
+                      placeholder="e.g jewelry, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
@@ -1358,7 +1250,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #2"
+                      placeholder="0"
                     />
                   </div>
                 </div>
@@ -1386,7 +1278,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Description #3"
+                      placeholder="e.g jewelry, etc"
                     />
                   </div>
                   <div className="flex flex-col gap-2 justify-center items-start w-[30rem]">
@@ -1418,7 +1310,7 @@ export default function ReportsPage() {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   `}
                       id="exampleFormControlInput1"
-                      placeholder="Cost #3"
+                      placeholder="0"
                     />
                   </div>
                 </div>

@@ -52,7 +52,7 @@ export function AddAccount() {
       email: form.email,
       username: form.username,
       password: form.password,
-      userTypeId: 1,
+      userTypeId: 3,
     };
     await axios
       .post(apiEndPoint, post)
@@ -280,9 +280,9 @@ export function AddAccount() {
                 onChange={(e) => {
                   setForm({ ...form, gender: e.target.value });
                 }}
-                className="bg-gray-50 borderw-[20rem] grow xl:grow-0 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
               >
-                <option selected>Male</option>
+                <option selected>Select Sex</option>
+                <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
             </div>

@@ -1,10 +1,11 @@
 import axios from "axios";
-import  Router  from "next/router";
-import { useState } from "react";
+import Router, { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { UserLayout } from "../../layout/user_layout";
 import { AccountHeader } from "../components/account_header";
 import { AdvisorLayout } from "../layout/advisor_layout";
+import { EmailClass } from "../router-data/data";
 
 interface FormData {
   typeInsurance: string;
@@ -20,6 +21,7 @@ export default function NotifactionPage() {
     insuranceName: "",
     insuranceDescription: "",
   });
+
   const apiEndPoint = "http://localhost:5555/api/v1/products";
 
   const addPost = async () => {
@@ -28,7 +30,9 @@ export default function NotifactionPage() {
       url: form.websiteLink,
       name: form.insuranceName,
       description: form.insuranceDescription,
-      sku: "N/A",
+      sku: "adgagasdga",
+      adviserId: items.id,
+
       quotation: "N/A",
       status: "N/A",
       meetingType: "N/A",
@@ -43,6 +47,16 @@ export default function NotifactionPage() {
         toast.error("Add Failed");
       });
   };
+  const [items, setItems] = useState<any>([]);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("items") || "{}");
+    if (items) {
+      setItems(items);
+    }
+  }, []);
+
+  console.log("ADD PRODUCT ID: " + items.id);
   return (
     <div className="">
       <Toaster />
@@ -92,8 +106,29 @@ export default function NotifactionPage() {
                 }}
               >
                 <option selected>Insurance Name</option>
-                <option value="Medicare">Medicare</option>
-                <option value="PhilHealth">PhilHealth</option>
+                <option value="Sun Fit and Well">Sun Fit and Well</option>
+                <option value="Sun Senior Care">Sun Senior Care</option>
+                <option value="Sun Cancer Care">Sun Cancer Care</option>
+                <option value="Sun Life Assure">Sun Life Assure</option>
+                <option value="Sun Healthier Life">Sun Healthier Life</option>
+                <option value="Sun First Aid">Sun First Aid</option>
+                <option value="Sun Maiden and Maiden Plus">
+                  Sun Maiden and Maiden Plus
+                </option>
+                <option value="Sun ICU Protect">Sun ICU Protect</option>
+                <option value="Health Care Access">Health Care Access</option>
+                <option value="Global Health Access">
+                  Global Health Access
+                </option>
+                <option value="Health Start Lite">Health Start Lite</option>
+                <option value="Health Start">Health Start</option>
+                <option value="Health Max">Health Max</option>
+                <option value="Maternity Care">Maternity Care</option>
+                <option value="MedConsult Adults">MedConsult Adults</option>
+                <option value="MedConsult Kids">MedConsult Kids</option>
+                <option value="MedConsult Seniors">MedConsult Seniors</option>
+                <option value="MedConsult Lite">MedConsult Lite</option>
+                <option value="Total ProtectER">Total ProtectER</option>
               </select>
             </div>
             <div className="flex flex-col xl:w-[40rem] grow xl:grow-0">

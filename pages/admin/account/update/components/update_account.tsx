@@ -6,7 +6,7 @@ import { withRouter } from "next/router";
 import Router from "next/router";
 import axios from "axios";
 import { type } from "os";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 interface FormData {
   id: string;
@@ -55,7 +55,6 @@ export function UpdateAccount({}) {
   });
   const apiEndPoint = "http://localhost:5555/api/v1/accounts";
   const postUpdate = {
-    id: form.id,
     firstName: form.firstName,
     middleName: form.middleName,
     lastName: form.lastName,
@@ -66,19 +65,19 @@ export function UpdateAccount({}) {
     email: form.email,
     username: form.username,
     password: form.password,
-    userTypeId: form.userTypeId,
+    userTypeId: parseInt(form.userTypeId),
   };
   const handeUpdate = async (id: any) => {
     await axios
       .patch(apiEndPoint + "/" + id, postUpdate)
       .then((response) => {
         toast.success("Updated Successfully");
-        Router.push("./products");
+        Router.push("./");
       })
       .catch((error) => {
         toast.error("Update Failed");
       });
-    console.log(type);
+    console.log(id);
   };
 
   return (
@@ -256,7 +255,7 @@ export function UpdateAccount({}) {
             <div className="w-[10rem] mt-10">
               {/* <Link href={"./"}> */}
               <button
-                type="submit"
+                onClick={() => handeUpdate(id)}
                 className="text-white bg-blue-700 text-center hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2  w-full"
               >
                 Save
@@ -265,6 +264,7 @@ export function UpdateAccount({}) {
             </div>
           </div>
         </div>
+        <Toaster />
       </div>
     </div>
   );

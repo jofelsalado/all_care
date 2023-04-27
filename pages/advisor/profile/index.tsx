@@ -68,7 +68,7 @@ export default function ProfilePage() {
                 >
                   <option selected>Expertise</option>
                   <option value="US">Traditional Insurance</option>
-                  <option value="CA">Variable unit insurance</option>
+                  <option value="CA">Variable unit link insurance</option>
                 </select>
               </div>
 
@@ -200,7 +200,7 @@ export default function ProfilePage() {
                   <option selected>Company</option>
                   <option value="US">SunLife</option>
                   <option value="CA">Insular</option>
-                  <option value="LE">Manulife</option>
+                  <option value="LE">AXA</option>
                 </select>
               </div>
               <div className="flex flex-col w-[20rem] grow xl:grow-0">

@@ -14,8 +14,10 @@ import Router from "next/router";
 import router, { useRouter } from "next/router";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import React from "react";
 
 export function AccountTable() {
+  const [showModal, setShowModal] = React.useState(false);
   const [posts, setPosts] = useState<any>([]);
   const apiEndPoint = "http://localhost:5555/api/v1/accounts";
   useEffect(() => {
@@ -30,7 +32,7 @@ export function AccountTable() {
   const handleDelete = async (post: any) => {
     await axios.delete(apiEndPoint + "/" + post.id);
     setPosts(posts.filter((p: any) => p.id !== post.id));
-    // setShowModal(false);
+    setShowModal(false);
   };
 
   return (
@@ -77,6 +79,57 @@ export function AccountTable() {
           </div>
         </Link>
       </div>
+      {posts.map((post: any) => (
+        <>
+          {showModal ? (
+            <>
+              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                <div className="relative w-[80rem] h-[40rem] my-6 mx-auto overflow-auto ">
+                  {/*content*/}
+                  <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                    {/*header*/}
+                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                      <h3 className="text-3xl font-semibold">
+                        Confirm Deletion
+                      </h3>
+                      <button
+                        className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                        onClick={() => setShowModal(false)}
+                      >
+                        <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                          ×
+                        </span>
+                      </button>
+                    </div>
+                    {/*body*/}
+                    <div className="relative p-6 flex-auto">
+                      <h1>Delete the data?</h1>
+                    </div>
+                    {/*footer*/}
+                    <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                      <button
+                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={() => setShowModal(false)}
+                      >
+                        Close
+                      </button>
+                      <button
+                        className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={() => handleDelete(post)}
+                      >
+                        Confirm
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+            </>
+          ) : null}
+        </>
+      ))}
       <div className="overflow-auto rounded-lg shadow  w-full">
         <table className="w-full">
           <thead className=" bg-[#f2f8ff] border-2 border-gray-200 ">
@@ -194,7 +247,7 @@ export function AccountTable() {
                       </div>
                     </button>
 
-                    <button onClick={() => handleDelete(post)}>
+                    <button onClick={() => setShowModal(true)}>
                       <div className="cursor-pointer hover:text-red-500 scale-100 hover:scale-125 duration-300">
                         <RiDeleteBinLine size="1.2rem" />
                       </div>

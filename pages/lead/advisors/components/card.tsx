@@ -1,16 +1,20 @@
 import Link from "next/link";
+import router from "next/router";
+import { useEffect, useState } from "react";
 import { GrStatusGoodSmall } from "react-icons/gr";
 
 export function Card({
   name,
-  address,
-  type,
-  currStatus,
-  client_types1,
-  client_types2,
-  client_types3,
+  meeting_type,
+  insurance_product,
+
   status,
+  currStatus,
+  key,
+  productId,
 }: any) {
+  const [prodId, setProdId] = useState<any>([]);
+
   var iconColor = "";
 
   if (currStatus == "ONLINE") {
@@ -20,15 +24,28 @@ export function Card({
   } else if (currStatus == "DEACTIVATED") {
     iconColor = "gray";
   }
+  useEffect(() => {
+    localStorage.setItem("prodId", JSON.stringify(prodId));
+    setProdId(productId);
+  }, [prodId]);
+  // console.log(
+  //   prodId.adviserData?.user.firstName + " " + prodId.adviserData?.user.lastName
+  // );
+  // console.log(prodId.adviserData.user?.birthdate);
+  const handlePost = () => {
+    console.log(
+      prodId.adviserData.user.firstName + " " + prodId.adviserData.user.lastName
+    );
+  };
   return (
     <div
+      key={key}
       className={`bg-white w-[20rem] shadow-2xl rounded-xl flex flex-col justify-center gap-4 items-center px-4 py-4 scale-95 ${status}`}
     >
       <div className="flex flex-row justify-around items-center w-full">
         <div className="bg-pink-500 w-[6.5rem] h-[6.5rem] rounded-full"></div>
         <div className="flex flex-col">
           <div>{name}</div>
-          <div>{address}</div>
 
           <div className="flex items-center mt-4">
             <svg
@@ -88,7 +105,7 @@ export function Card({
         <div className="bg-slate-200 w-[7rem] h-[6rem] rounded-xl  flex flex-col items-center justify-start pt-3">
           <div className="text-sm text-center font-khulabold">Type:</div>
           <div className="text-sm text-center  h-full flex justify-center items-center font-khulalight w-min">
-            {type}
+            {meeting_type}
           </div>
         </div>
 
@@ -105,17 +122,42 @@ export function Card({
       <div className="bg-slate-200 w-[16rem]  flex flex-col justify-start gap-3 items-center py-5 rounded-xl">
         <div className=" font-khulabold">Insurance Types:</div>
         <div className="flex flex-col  h-full justify-center items-start gap-1 font-khulalight ">
-          <div>{client_types1}</div>
-          <div>{client_types2}</div>
-          <div>{client_types3}</div>
+          <div>{insurance_product}</div>
         </div>
       </div>
-      <Link
-        href={"./view-profile"}
+      <button
+        // href={"./view-profile"}
+        onClick={() => {
+          router.push(
+            {
+              pathname: "./view-profile",
+              query: {
+                id: prodId?.id,
+                advisorName:
+                  prodId.adviserData?.user.firstName +
+                  " " +
+                  prodId.adviserData?.user.lastName,
+                company: prodId.adviser?.company,
+                expertise: prodId.adviser?.expertise,
+                typeMeeting: prodId?.meetingType,
+                age: prodId.adviserData.user?.birthdate,
+                contact: prodId.adviserData.user?.contactNo,
+                email: prodId.adviserData.user?.email,
+                address: prodId.adviserData.user?.address,
+                typeInsurance: prodId?.type,
+                insuranceProducts: prodId?.name,
+                insuranceProductLink: prodId?.url,
+                insuranceDescription: prodId?.description,
+              },
+            },
+            "./view-profile"
+          );
+        }}
         className=" font-khulabold text-xs text-blue-500 underline pt-0"
+        // href={"/"}
       >
         View Profile
-      </Link>
+      </button>
     </div>
   );
 }

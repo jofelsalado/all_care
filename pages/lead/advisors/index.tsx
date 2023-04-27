@@ -4,8 +4,40 @@ import { AccountHeader } from "../components/account_header";
 import { LeadLayout } from "../layout/lead_layout";
 import { Card } from "./components/card";
 import { BiSortAlt2 } from "react-icons/bi";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+import { EmailClass } from "../../advisor/router-data/data";
 
 export default function ViewAdvisorsPage({ label, desc, py }: any) {
+  const [posts, setPosts] = useState<any>([]);
+  // const [postsProd, setPostsProd] = useState<any>([]);
+  const router = useRouter();
+  // const apiEndPoint = "http://localhost:5555/api/v1/accounts";
+  const apiEndPoint = "http://localhost:5555/api/v1/products";
+  // useEffect(() => {
+  //   const getPosts = async () => {
+  //     const response = await axios.get(apiEndPoint);
+  //     setPosts(response.data.data);
+  //   };
+  //   getPosts();
+  // }, []);
+
+  useEffect(() => {
+    console.log(posts);
+  }, [posts]);
+
+  useEffect(() => {
+    const getPosts = async () => {
+      const response = await axios.get(apiEndPoint);
+
+      setPosts(response.data);
+      // console.log(response.data);
+      // console.log(posts);
+    };
+    getPosts();
+  }, []);
+
   return (
     <div className="">
       <AccountHeader header="View Advisors" name="James Villarojo" />
@@ -81,34 +113,28 @@ export default function ViewAdvisorsPage({ label, desc, py }: any) {
           </button>
         </div>
         <div className=" flex-1 flex-wrap flex w-min justify-evenly items-evenly">
-          <Card
-            name="Mae Mabilog"
-            address="Cordova, Cebu"
-            type="Zoom"
-            currStatus="ONLINE"
-            client_types1="ICU Protect"
-          />
-          <Card
-            name="Mae Mabilog"
-            address="Cordova, Cebu"
-            type="Google Meet"
-            currStatus="OFFLINE"
-            client_types1="First Aid"
-          />
-          <Card
-            name="Mae Mabilog"
-            address="Cordova, Cebu"
-            type="Zoom"
-            currStatus="OFFLINE"
-            client_types1="Cancer Care"
-          />
-          <Card
-            name="Mae Mabilog"
-            address="Cordova, Cebu"
-            type="Face to Face"
-            currStatus="UNAVAILABLE"
-            client_types1="Senior Care"
-          />
+          {posts.map((post: any) => (
+            <Card
+              key={post.id}
+              name={post.adviserData.user.firstName}
+              meeting_type={post.meetingType}
+              insurance_product={post.name}
+              currStatus={post.status}
+              productId={post}
+            />
+          ))}
+          {/* {posts
+            .filter((post: any) => post.userTypeId == 3)
+            .map((post: any) => (
+              <Card
+                key={post.id}
+                name={post.firstName}
+                address={post.address}
+                type={post.advisor}
+                currStatus={"postprod.status"}
+                client_types1={"postprod.typeInsurance"}
+              />
+            ))} */}
         </div>
       </div>
     </div>

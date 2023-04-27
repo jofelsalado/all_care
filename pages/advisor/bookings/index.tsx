@@ -4,11 +4,23 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BsCheckCircle } from "react-icons/bs";
 import { AdvisorLayout } from "../layout/advisor_layout";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdOutlineDisabledByDefault } from "react-icons/md";
 
 export default function BookingsPage() {
   const [showModal, setShowModal] = React.useState(false);
+  const [form, setForm] = useState<any>({});
+  const [posts, setPosts] = useState<any>([]);
+
+  useEffect(() => {
+    setPosts(Object.values(form));
+    // localStorage.removeItem("form");
+    const items = JSON.parse(localStorage.getItem("form") || "{}");
+    if (items) {
+      setForm(items);
+    }
+  }, []);
+  // console.log(form.name);
   return (
     <div>
       <>
@@ -89,12 +101,15 @@ export default function BookingsPage() {
                   Actions
                 </th>
                 <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
+                  Status
+                </th>
+                <th className="grow pl-3 pr-3 pt-2 pb-2 text-sm font-semibold tracking-wide text-left">
                   Remarks
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y-8 shadow-2xl leading-cust before:content-[''] before:text-[#f2f8ff]  ">
-              <tr
+              {/* <tr
                 className={`bg-white hover:bg-gradient-to-r from-[#588cfc] to-pink-400  hover:text-white scale-100 laptop:scale-100 laptop:hover:scale-105 duration-300`}
               >
                 <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
@@ -219,7 +234,193 @@ export default function BookingsPage() {
                     view
                   </button>
                 </td>
-              </tr>
+              </tr> */}
+              {/* {Object.keys(form).map((form: any, i) => (
+                <tr
+                  key={i}
+                  className={`bg-white hover:bg-gradient-to-r from-[#588cfc] to-pink-400  hover:text-white scale-100 laptop:scale-100 laptop:hover:scale-105 duration-300`}
+                >
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    3
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    {form.form.booking}
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    {form.name}
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    {form.type_meeting}
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    {form.type}
+                  </td>
+                  <td className="p-3 text-sm whitespace-nowrap ">
+                    <div className="flex gap-2">
+                      <button>
+                        <div className="cursor-pointer hover:text-blue-500 scale-100 hover:scale-125 duration-300">
+                          <BsCheckCircle size="1.2rem" />
+                        </div>
+                      </button>
+
+                      <button>
+                        <div className="cursor-pointer hover:text-red-500 scale-100 hover:scale-125 duration-300">
+                          <MdOutlineDisabledByDefault size="1.2rem" />
+                        </div>
+                      </button>
+                    </div>
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap ">
+                    <button
+                      onClick={() => setShowModal(true)}
+                      className="underline hover:text-blue-500 cursor-pointer"
+                    >
+                      view
+                    </button>
+                  </td>
+                </tr>
+              ))} */}
+              {/* {Object.keys(form).forEach(function (key, index) {
+                <tr
+                  key={key}
+                  className={`bg-white hover:bg-gradient-to-r from-[#588cfc] to-pink-400  hover:text-white scale-100 laptop:scale-100 laptop:hover:scale-105 duration-300`}
+                >
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    3
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    {form.form.booking}
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    {form.name}
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    {form.type_meeting}
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    {form.type}
+                  </td>
+                  <td className="p-3 text-sm whitespace-nowrap ">
+                    <div className="flex gap-2">
+                      <button>
+                        <div className="cursor-pointer hover:text-blue-500 scale-100 hover:scale-125 duration-300">
+                          <BsCheckCircle size="1.2rem" />
+                        </div>
+                      </button>
+
+                      <button>
+                        <div className="cursor-pointer hover:text-red-500 scale-100 hover:scale-125 duration-300">
+                          <MdOutlineDisabledByDefault size="1.2rem" />
+                        </div>
+                      </button>
+                    </div>
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap ">
+                    <button
+                      onClick={() => setShowModal(true)}
+                      className="underline hover:text-blue-500 cursor-pointer"
+                    >
+                      view
+                    </button>
+                  </td>
+                </tr>;
+              })} */}
+              {/* {Object.keys(form).map(function (key) {
+                return (
+                  <tr
+                    key={1}
+                    className={`bg-white hover:bg-gradient-to-r from-[#588cfc] to-pink-400  hover:text-white scale-100 laptop:scale-100 laptop:hover:scale-105 duration-300`}
+                  >
+                    <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                      {key}
+                    </td>
+                    <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                      {form.booking}
+                    </td>
+                    <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                      {form.name}
+                    </td>
+                    <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                      {form.type_meeting}
+                    </td>
+                    <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                      {form.type_insurance}
+                    </td>
+
+                    <td className="p-3 text-sm whitespace-nowrap ">
+                      <div className="flex gap-2">
+                        <button>
+                          <div className="cursor-pointer hover:text-blue-500 scale-100 hover:scale-125 duration-300">
+                            <BsCheckCircle size="1.2rem" />
+                          </div>
+                        </button>
+
+                        <button>
+                          <div className="cursor-pointer hover:text-red-500 scale-100 hover:scale-125 duration-300">
+                            <MdOutlineDisabledByDefault size="1.2rem" />
+                          </div>
+                        </button>
+                      </div>
+                    </td>
+                    <td className="p-3 text-sm tex-gray-700 whitespace-nowrap ">
+                      <button
+                        onClick={() => setShowModal(true)}
+                        className="underline hover:text-blue-500 cursor-pointer"
+                      >
+                        view
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })} */}
+              {posts.map((post: any) => (
+                <tr
+                  key={post.id}
+                  className={`bg-white hover:bg-gradient-to-r from-[#588cfc] to-pink-400  hover:text-white scale-100 laptop:scale-100 laptop:hover:scale-105 duration-300`}
+                >
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    BOOKING'S ID
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    BOOKING DATE
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    LEAD'S NAME
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    F2F/ONLINE
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    MEDICARE
+                  </td>
+                  <td className="p-3 text-sm whitespace-nowrap ">
+                    <div className="flex gap-2">
+                      <button>
+                        <div className="cursor-pointer hover:text-blue-500 scale-100 hover:scale-125 duration-300">
+                          <BsCheckCircle size="1.2rem" />
+                        </div>
+                      </button>
+
+                      <button>
+                        <div className="cursor-pointer hover:text-red-500 scale-100 hover:scale-125 duration-300">
+                          <MdOutlineDisabledByDefault size="1.2rem" />
+                        </div>
+                      </button>
+                    </div>
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap">
+                    ACCEPTED/DECLINED
+                  </td>
+                  <td className="p-3 text-sm tex-gray-700 whitespace-nowrap ">
+                    <button
+                      onClick={() => setShowModal(true)}
+                      className="underline hover:text-blue-500 cursor-pointer"
+                    >
+                      view
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

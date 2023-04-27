@@ -3,41 +3,64 @@ import Link from "next/link";
 import Image from "next/image";
 import { GetServerSideProps } from "next";
 import { prisma } from "../../../lib/prisma";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Router from "next/router";
 import toast, { Toaster } from "react-hot-toast";
 import { id } from "date-fns/locale";
 import { StringLiteral } from "typescript";
+import React from "react";
+import axios from "axios";
+import router from "next/router";
+import { EmailClass } from "../router-data/data";
 
 interface FormData {
-  id: string;
-  username: string;
+  email: string;
   password: string;
-  user_role: string;
 }
 
 export function AdvisorLogin({ users }: any) {
   const [form, setForm] = useState<FormData>({
-    id: "",
-    username: "",
+    email: "",
     password: "",
-    user_role: "",
   });
+  const [posts, setPosts] = useState<any>([]);
+  const [error, setError] = React.useState<any>([]);
+  const apiEndPoint = "http://localhost:5555/api/v1/auth/login";
+  const [items, setItems] = useState([]);
 
-  const result = users.some(
-    (item: { id: string; username: string; password: string }) =>
-      item.username === String(form.username) &&
-      item.password === String(form.password)
-  );
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
-  const handleClick = () => {
-    if (result == true) {
-      toast.success("Welcome!");
-      Router.push("./notification");
-    } else {
-      toast.error("User not found!");
-    }
+  const addPost = async () => {
+    const post = {
+      email: form.email,
+      password: form.password,
+    };
+    await axios
+      .post(apiEndPoint, post)
+      .then((response) => {
+        console.log(response.data.user.adviser);
+        toast.success("Welcome");
+        setItems(response.data.user.adviser);
+        Router.push("./notification");
+        // EmailClass.setEmail(form.email);
+        // router.push(
+        //   {
+        //     pathname: "./notification",
+        //     query: {
+        //       email: form.email,
+        //     },
+        //   },
+        //   "./add-products"
+        // );
+      })
+      .catch((error) => {
+        toast.error("Invalid login!");
+      });
   };
+
+  // console.log(form.email);
   return (
     <section className="pt-6">
       <div className="px-6 h-full text-gray-800">
@@ -62,10 +85,8 @@ export function AdvisorLogin({ users }: any) {
                   type="text"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   placeholder="Username"
-                  value={form.username}
-                  onChange={(e) =>
-                    setForm({ ...form, username: e.target.value })
-                  }
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
                 />
               </div>
 
@@ -95,17 +116,14 @@ export function AdvisorLogin({ users }: any) {
                     Remember me
                   </label>
                 </div>
-                <a
-                  href="#!"
-                  className="text-gray-800"
-                >
+                <a href="#!" className="text-gray-800">
                   Forgot password?
                 </a>
               </div>
 
               <div className="text-center lg:text-left">
                 <button
-                  onClick={handleClick}
+                  onClick={addPost}
                   type="button"
                   className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                 >
