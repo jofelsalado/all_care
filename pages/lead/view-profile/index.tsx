@@ -14,6 +14,7 @@ import {
 import { Router, useRouter } from "next/router";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import { addDays, format } from "date-fns";
 declare module "react" {
   interface HTMLProps<T> {
     size?: string;
@@ -47,9 +48,22 @@ export default function ViewProfile() {
   //     setProdId(items);
   //   }
   // }, []);
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(format(new Date(), "dd/mm/yyyy"));
+  const [endDate, setEndDate] = useState(null);
   const [modalOpen, setModalOpen] = React.useState(false);
   const [showModal, setShowModal] = React.useState(false);
+  const [readDate, setReadDate] = React.useState<any>({});
+  const [posts, setPosts] = useState<any>([]);
+  const apiEndPointProd = "http://localhost:5555/api/v1/adviser-consultations";
+  useEffect(() => {
+    const getPosts = async () => {
+      const response = await axios.get(apiEndPointProd);
+      setPosts(response.data.data.consultationDate);
+      console.log(response.data);
+      // console.log(startDate);
+    };
+    getPosts();
+  }, []);
 
   const [form, setForm] = React.useState({
     id: Number(id),
@@ -92,6 +106,7 @@ export default function ViewProfile() {
       .post(apiEndPoint, post)
       .then((response) => {
         toast.success("Added Successfully");
+        // setReadDate(response);
         handlePost();
         // Router.push("./products");
       })
@@ -131,6 +146,13 @@ export default function ViewProfile() {
     console.log("Insurance Description: " + insuranceDescription);
     // console.log(remarks);
   };
+
+  const onChange = (dates: any) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+
   return (
     <div className="flex">
       <Toaster />
@@ -264,11 +286,9 @@ export default function ViewProfile() {
           >
             <div>
               <DatePicker
-                selected={startDate}
+                selected={addDays(new Date(), 1)}
                 onChange={(date: any) => setStartDate(date)}
-                // onChange={(date: any) => {
-                //   setForm({ ...form, booking: date });
-                // }}
+                minDate={addDays(new Date(), 1)}
               />
             </div>
 
